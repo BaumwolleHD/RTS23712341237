@@ -6,6 +6,7 @@ using UnityEngine;
 public class ReadOnlyAttribute : PropertyAttribute
 {
 
+
 }
 
 [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
