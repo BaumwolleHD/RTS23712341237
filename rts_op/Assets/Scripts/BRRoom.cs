@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 
+//Zum beispiel penis oder so
+
 public class BRRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
     public static BRRoom instance;
