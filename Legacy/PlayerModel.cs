@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 //JEDEM SPIELER EINEN CHUNK DER MAP ZUORDNEN!
-
+/*
 public class PlayerModel : PlayerMonoBehaviour
 {
     [HideInInspector] public Rigidbody physicsComponent;
@@ -117,3 +117,4 @@ public class PlayerModel : PlayerMonoBehaviour
         return hit && !intJumpCooldown.IsOnCooldown;
     }    
 }
+*/

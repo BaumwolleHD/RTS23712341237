@@ -1,6 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
-
+/*
 public class PlayerManager : PlayerMonoBehaviour
 {
     //TODO: Ersten Frame ausblenden (bzw. alles bevor Scene fertig aufgebaut)
@@ -132,3 +132,4 @@ public class PlayerManager : PlayerMonoBehaviour
         }
     }
 }
+*/
