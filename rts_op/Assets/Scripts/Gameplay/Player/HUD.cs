@@ -7,7 +7,7 @@ public class HUD : MonoBehaviour
 {
     public  void OnGUI()
     {
-        PlayerManager playerManager = GetComponentInParent<PlayerManager>();
+        PlayerManager playerManager = GetComponent<PlayerManager>();
         FieldInfo[] fields = playerManager.playerData.GetType().GetFields();
         int fieldNumber = 0;
         foreach (FieldInfo field in fields)
