@@ -34,7 +34,7 @@ public class Menu : MonoBehaviourPunCallbacks
         var roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 2 };
         roomOps.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable(); roomOps.CustomRoomProperties.Add("seed", Random.Range(-200000000, 200000000));
         roomOps.CustomRoomProperties.Add("base1Position", baseCalcVector);
-        roomOps.CustomRoomProperties.Add("base2Position", -baseCalcVector);
+        roomOps.CustomRoomProperties.Add("base2Position", -baseCalcVector + new Vector3(0, 15, 0));
         PhotonNetwork.CreateRoom(null, roomOps);
     }
 }
