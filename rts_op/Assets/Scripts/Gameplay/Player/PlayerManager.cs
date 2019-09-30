@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
+            GetComponent<Camera>().enabled = true;
             PhotonNetwork.Instantiate("Base", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
         }
     }
