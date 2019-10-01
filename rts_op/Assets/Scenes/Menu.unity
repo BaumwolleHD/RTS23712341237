@@ -76,7 +76,7 @@ LightmapSettings:
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
-    m_PVRBounces: 2
+    m_PVRBounces: 3
     m_PVREnvironmentSampleCount: 500
     m_PVREnvironmentReferencePointCount: 2048
     m_PVRFilteringMode: 2
@@ -165,8 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapXMax: 360
   mapYMax: 240
-  base1Position: {x: 0, y: 0, z: 0}
-  base2Position: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +238,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 10.010853, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: -1.7470158e-19, z: 8.9e-43, w: -1.7470158e-19}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
