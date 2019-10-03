@@ -8,6 +8,8 @@ public class Trooper : MonoBehaviour
 {
     public int currentHp;
     public int currentXp;
+
+    [HideInInspector]
     public TrooperDataType trooperDataType;
 
     void Start()
@@ -32,7 +34,7 @@ public class TrooperEditor : Editor
                 trooperTypes.Add(field.Name);
             }
         }
-        choiceIndex = EditorGUILayout.Popup(choiceIndex,trooperTypes.ToArray());
+        choiceIndex = EditorGUILayout.Popup("Unit-type",choiceIndex,trooperTypes.ToArray());
         Trooper thisTrooper = target as Trooper;
         if(TrooperTypeData.instance)
         {
