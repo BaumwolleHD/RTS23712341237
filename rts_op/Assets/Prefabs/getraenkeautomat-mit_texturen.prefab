@@ -88,10 +88,10 @@ MeshRenderer:
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
+  m_ImportantGI: 1
   m_StitchLightmapSeams: 1
   m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
+  m_MinimumChartSize: 2
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -121,13 +121,8 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: c0ff39e4b58dc3a43bb9a282eafee5f9,
         type: 3}
       propertyPath: m_Name
-      value: getraenkeautomat
+      value: getraenkeautomat-mit_texturen
       objectReference: {fileID: 0}
-    - target: {fileID: -7375400384105505070, guid: c0ff39e4b58dc3a43bb9a282eafee5f9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a3743172f8650f34da51329e9c7bc8a9, type: 2}
     - target: {fileID: -4216859302048453862, guid: c0ff39e4b58dc3a43bb9a282eafee5f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -183,6 +178,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7375400384105505070, guid: c0ff39e4b58dc3a43bb9a282eafee5f9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a3743172f8650f34da51329e9c7bc8a9, type: 2}
     - target: {fileID: -3753531241494421337, guid: c0ff39e4b58dc3a43bb9a282eafee5f9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

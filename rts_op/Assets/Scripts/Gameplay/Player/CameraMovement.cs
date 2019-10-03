@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour
     public float startCameraSpeed = 10;
     void Update()
     {
-        GetComponent<Camera>().fieldOfView -= startCameraSpeed * Time.deltaTime * Input.GetAxis("Mouse ScrollWheel") * 50;
+        GetComponent<Camera>().fieldOfView -= startCameraSpeed * Time.deltaTime * Input.GetAxis("Mouse ScrollWheel") * 40;
         zoomValue = GetComponent<Camera>().fieldOfView / 60;
         cameraSpeed = startCameraSpeed * zoomValue * 2;
         if (Input.mousePosition.x <= 1)
@@ -31,7 +31,8 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
         {
             GetComponent<Camera>().fieldOfView = 60;
-        }
+            GetComponent<Transform>().position = new Vector3(60, 70, 60);
+       }
     }
 }
 

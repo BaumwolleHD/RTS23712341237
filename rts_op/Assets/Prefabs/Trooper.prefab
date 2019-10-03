@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4638837791081428029}
   - component: {fileID: 4934185902019463177}
   - component: {fileID: 4218960292854265976}
-  - component: {fileID: 1883826753016132681}
+  - component: {fileID: -883002629327308418}
   m_Layer: 0
   m_Name: Trooper
   m_TagString: Untagged
@@ -92,7 +92,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1883826753016132681
+--- !u!114 &-883002629327308418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,3 +104,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8310f21c9533b04787b60bba87e5b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHp: 0
+  currentXp: 0
+  trooperDataType:
+    maxHp: 0
+    xpForLvl2: 0
+    xpForLvl3: 0
+    primaryAttackDamage: 0
+    secondaryAttackDamage: 0
+    attackRange: 0
+    attackSpeed: 0
+    movementSpeed: 0
