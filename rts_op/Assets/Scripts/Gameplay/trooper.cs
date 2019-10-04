@@ -36,10 +36,7 @@ public class Trooper : MonoBehaviour
         {
             pos = hit.point;
         }
-        if(Application.isPlaying)
-        {
-            GetComponent<NavMeshAgent>().destination = pos;
-        }
+        GetComponent<NavMeshAgent>().destination = pos;
     }
 }
 
@@ -71,10 +68,11 @@ public class TrooperEditor : Editor
             {
                 string name = ((TrooperDataType)field.GetValue(trooperTypeData)).name;
                 trooperTypes.Add("(" + count.ToString() + ") " + (name != "" ? name : "Namenlos"));
-            }
-            if(((TrooperDataType)field.GetValue(trooperTypeData)) == thisTrooper.trooperDataType)
-            {
-                currentIndex = count-1;
+                if (((TrooperDataType)field.GetValue(trooperTypeData)) == thisTrooper.trooperDataType)
+                {
+                    currentIndex = count - 1;
+                }
+
             }
         }
         if(thisTrooper.lastChoiceIndex == -1)
