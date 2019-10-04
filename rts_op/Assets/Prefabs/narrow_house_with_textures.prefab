@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!208 &5614128386109082044
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2922803794649439794}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 12, y: 7, z: 4}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 7, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &6606234774387361595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +26,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: ed524e00cdcad8b4c9b2183fca2f5460,
         type: 3}
       propertyPath: m_Name
-      value: narrow_house1
+      value: narrow_house_with_textures
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ed524e00cdcad8b4c9b2183fca2f5460,
         type: 3}
@@ -364,3 +380,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a3743172f8650f34da51329e9c7bc8a9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed524e00cdcad8b4c9b2183fca2f5460, type: 3}
+--- !u!1 &2922803794649439794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ed524e00cdcad8b4c9b2183fca2f5460,
+    type: 3}
+  m_PrefabInstance: {fileID: 6606234774387361595}
+  m_PrefabAsset: {fileID: 0}
