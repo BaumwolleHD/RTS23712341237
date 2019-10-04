@@ -139,4 +139,4 @@ MonoBehaviour:
     secondaryAttackDamage: 1
     attackRange: 1
     attackSpeed: 1
-    movementSpeed: 1
+    movementSpeed: -8.8
