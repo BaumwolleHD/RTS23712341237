@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4934185902019463177}
   - component: {fileID: 4218960292854265976}
   - component: {fileID: 3376380344724037025}
+  - component: {fileID: -7551450398545983058}
   m_Layer: 0
   m_Name: Trooper
   m_TagString: Untagged
@@ -104,14 +105,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8310f21c9533b04787b60bba87e5b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHp: 0
+  currentHp: 20
   currentXp: 0
   trooperDataType:
-    maxHp: 0
-    xpForLvl2: 0
-    xpForLvl3: 0
-    primaryAttackDamage: 0
+    name: Trooper 1
+    maxHp: 20
+    xpForLvl2: 10
+    xpForLvl3: 60
+    primaryAttackDamage: 50
     secondaryAttackDamage: 0
-    attackRange: 0
-    attackSpeed: 0
-    movementSpeed: 0
+    attackRange: 1
+    attackSpeed: 1
+    movementSpeed: 1.2
+--- !u!195 &-7551450398545983058
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4784424860928624331}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.3
+  m_Speed: 30
+  m_Acceleration: 30
+  avoidancePriority: 50
+  m_AngularSpeed: 170
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.99999994
+  m_BaseOffset: 0.49999997
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

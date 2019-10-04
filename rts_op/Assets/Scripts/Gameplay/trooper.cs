@@ -4,18 +4,33 @@ using System.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class Trooper : MonoBehaviour
 {
     public int currentHp;
     public int currentXp;
-    
+
     public TrooperDataType trooperDataType;
 
-    void Start()
+    public void Start()
     {
-       currentHp = trooperDataType.maxHp;
+        currentHp = trooperDataType.maxHp;
+    }
+
+    public void Update()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Vector3 pos = Vector3.zero;
+        if (Physics.Raycast(ray, out hit))
+        {
+            Debug.Log("Hit!");
+            pos = hit.point;
+        }
+        
+        GetComponent<NavMeshAgent>().destination = pos;
     }
 }
 
@@ -25,7 +40,14 @@ public class TrooperEditor : Editor
     int choiceIndex;
     public override void OnInspectorGUI()
     {
-        EditorSceneManager.OpenScene("Assets/Scenes/Menu.unity", OpenSceneMode.Additive);
+        Trooper thisTrooper = target as Trooper;
+
+        if (!Application.isPlaying)
+        {
+            thisTrooper.Start();
+            EditorSceneManager.OpenScene("Assets/Scenes/Menu.unity", OpenSceneMode.Additive);
+        }
+
         TrooperTypeData trooperTypeData = GameObject.Find("GlobalData").GetComponent<TrooperTypeData>();
         
         FieldInfo[] fields = typeof(TrooperTypeData).GetFields();
@@ -39,14 +61,8 @@ public class TrooperEditor : Editor
             }
         }
         choiceIndex = EditorGUILayout.Popup("Unit-type",choiceIndex,trooperTypes.ToArray());
-        Trooper thisTrooper = target as Trooper;
 
         thisTrooper.trooperDataType = (TrooperDataType)trooperTypeData.GetType().GetFields()[choiceIndex + 1].GetValue(trooperTypeData);
-
-        if(!Application.isPlaying)
-        {
-            thisTrooper.currentHp = thisTrooper.trooperDataType.maxHp;
-        }
 
         DrawDefaultInspector();
     }

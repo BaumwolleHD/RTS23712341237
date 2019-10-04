@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
-        PhotonNetwork.Instantiate("Player", new Vector3(60,70,60), Quaternion.Euler(40,-130,0));
+        else
+        {
+            PhotonNetwork.Instantiate("Player", new Vector3(60, 70, 60), Quaternion.Euler(40, -130, 0));
+        }
     }
 }

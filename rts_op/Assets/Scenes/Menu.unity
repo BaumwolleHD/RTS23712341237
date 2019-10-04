@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trooper1:
-    name: 123
+    name: Trooper 1
     maxHp: 20
     xpForLvl2: 10
     xpForLvl3: 60
@@ -160,7 +160,7 @@ MonoBehaviour:
     attackSpeed: 1
     movementSpeed: 1.2
   trooper2:
-    name: 
+    name: Trooper 2
     maxHp: 1
     xpForLvl2: 1
     xpForLvl3: 1
