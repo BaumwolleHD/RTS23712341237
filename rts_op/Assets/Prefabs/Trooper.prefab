@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4934185902019463177}
   - component: {fileID: 4218960292854265976}
   - component: {fileID: -7551450398545983058}
-  - component: {fileID: -4093559346585247723}
+  - component: {fileID: 5222695526024813536}
   m_Layer: 0
   m_Name: Trooper
   m_TagString: Untagged
@@ -115,7 +115,7 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-4093559346585247723
+--- !u!114 &5222695526024813536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

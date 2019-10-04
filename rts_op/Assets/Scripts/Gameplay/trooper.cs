@@ -12,7 +12,8 @@ public class Trooper : MonoBehaviour
     public int currentHp;
     public int currentXp;
 
-    public int lastChoiceIndex;
+    [HideInInspector]
+    public int lastChoiceIndex = -1;
 
     public TrooperDataType trooperDataType;
 
@@ -75,6 +76,10 @@ public class TrooperEditor : Editor
             {
                 currentIndex = count-1;
             }
+        }
+        if(thisTrooper.lastChoiceIndex == -1)
+        {
+            currentIndex = 0;
         }
         int choiceIndex = EditorGUILayout.Popup("Unit-type", currentIndex, trooperTypes.ToArray());
         if(choiceIndex != thisTrooper.lastChoiceIndex)
