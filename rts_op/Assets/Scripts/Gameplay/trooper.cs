@@ -12,30 +12,32 @@ public class Trooper : MonoBehaviour
     public int currentHp;
     public int currentXp;
 
+    public int lastChoiceIndex;
+
     public TrooperDataType trooperDataType;
 
     public void Start()
     {
         currentHp = trooperDataType.maxHp;
+
+        if (GetComponent<NavMeshAgent>().speed != trooperDataType.movementSpeed)
+        {
+            GetComponent<NavMeshAgent>().speed = trooperDataType.movementSpeed;
+        }
     }
 
-    public void Update()
+    void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Vector3 pos = Vector3.zero;
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("Hit!");
             pos = hit.point;
         }
         if(Application.isPlaying)
         {
             GetComponent<NavMeshAgent>().destination = pos;
-        }
-        if(GetComponent<NavMeshAgent>().speed != trooperDataType.movementSpeed)
-        {
-            GetComponent<NavMeshAgent>().speed = trooperDataType.movementSpeed;
         }
     }
 }
@@ -43,7 +45,6 @@ public class Trooper : MonoBehaviour
 [CustomEditor(typeof(Trooper))]
 public class TrooperEditor : Editor
 {
-    int choiceIndex;
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
@@ -59,23 +60,32 @@ public class TrooperEditor : Editor
 
         FieldInfo[] fields = typeof(TrooperTypeData).GetFields();
         List<string> trooperTypes = new List<string>();
+        int count = 0;
+
+        int currentIndex = 0;
         foreach (FieldInfo field in fields)
         {
+            count++;
             if (field.Name != "instance")
             {
                 string name = ((TrooperDataType)field.GetValue(trooperTypeData)).name;
-                trooperTypes.Add(name != "" ? name : "Namenlos");
+                trooperTypes.Add("(" + count.ToString() + ") " + (name != "" ? name : "Namenlos"));
+            }
+            if(((TrooperDataType)field.GetValue(trooperTypeData)) == thisTrooper.trooperDataType)
+            {
+                currentIndex = count-1;
             }
         }
-        choiceIndex = EditorGUILayout.Popup("Unit-type",choiceIndex,trooperTypes.ToArray());
-
-        thisTrooper.trooperDataType = (TrooperDataType)trooperTypeData.GetType().GetFields()[choiceIndex + 1].GetValue(trooperTypeData);
-        
+        int choiceIndex = EditorGUILayout.Popup("Unit-type", currentIndex, trooperTypes.ToArray());
+        if(choiceIndex != thisTrooper.lastChoiceIndex)
+        {
+            thisTrooper.trooperDataType = (TrooperDataType)trooperTypeData.GetType().GetFields()[choiceIndex].GetValue(trooperTypeData);
+            thisTrooper.lastChoiceIndex = choiceIndex;
+        }
 
         if (!Application.isPlaying)
         {
             thisTrooper.Start();
-            thisTrooper.Update();
         }
 
     }

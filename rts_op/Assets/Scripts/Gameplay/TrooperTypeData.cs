@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class TrooperTypeData : MonoBehaviour
 {
-    public static TrooperTypeData instance;
     public TrooperDataType trooper1;
     public TrooperDataType trooper2;
+
+    public static TrooperTypeData instance;
     void Awake()
     {
         instance = this;

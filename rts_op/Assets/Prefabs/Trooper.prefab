@@ -13,13 +13,13 @@ GameObject:
   - component: {fileID: 4934185902019463177}
   - component: {fileID: 4218960292854265976}
   - component: {fileID: -7551450398545983058}
-  - component: {fileID: -3173691123234221251}
+  - component: {fileID: -4093559346585247723}
   m_Layer: 0
   m_Name: Trooper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1998864397235279694
 Transform:
@@ -103,7 +103,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 38.6
+  m_Speed: 1
   m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 170
@@ -115,7 +115,7 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-3173691123234221251
+--- !u!114 &-4093559346585247723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,15 +127,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8310f21c9533b04787b60bba87e5b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHp: 20
+  currentHp: 1
   currentXp: 0
+  lastChoiceIndex: 1
   trooperDataType:
-    name: Trooper 1
-    maxHp: 20
-    xpForLvl2: 10
-    xpForLvl3: 60
-    primaryAttackDamage: 60
-    secondaryAttackDamage: 0
+    name: Trooper 2
+    maxHp: 1
+    xpForLvl2: 1
+    xpForLvl3: 1
+    primaryAttackDamage: 1
+    secondaryAttackDamage: 1
     attackRange: 1
     attackSpeed: 1
-    movementSpeed: 38.6
+    movementSpeed: 1
