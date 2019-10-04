@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Trooper : MonoBehaviour
 {
     public int currentHp;
     public int currentXp;
-
-    [HideInInspector]
+    
     public TrooperDataType trooperDataType;
 
     void Start()
@@ -24,21 +25,29 @@ public class TrooperEditor : Editor
     int choiceIndex;
     public override void OnInspectorGUI()
     {
-        DrawDefaultInspector();
+        EditorSceneManager.OpenScene("Assets/Scenes/Menu.unity", OpenSceneMode.Additive);
+        TrooperTypeData trooperTypeData = GameObject.Find("GlobalData").GetComponent<TrooperTypeData>();
+        
         FieldInfo[] fields = typeof(TrooperTypeData).GetFields();
         List<string> trooperTypes = new List<string>();
         foreach (FieldInfo field in fields)
         {
             if (field.Name != "instance")
             {
-                trooperTypes.Add(field.Name);
+                string name = ((TrooperDataType)field.GetValue(trooperTypeData)).name;
+                trooperTypes.Add(name != "" ? name : "Namenlos");
             }
         }
         choiceIndex = EditorGUILayout.Popup("Unit-type",choiceIndex,trooperTypes.ToArray());
         Trooper thisTrooper = target as Trooper;
-        if(TrooperTypeData.instance)
+
+        thisTrooper.trooperDataType = (TrooperDataType)trooperTypeData.GetType().GetFields()[choiceIndex + 1].GetValue(trooperTypeData);
+
+        if(!Application.isPlaying)
         {
-            thisTrooper.trooperDataType = (TrooperDataType)TrooperTypeData.instance.GetType().GetFields()[choiceIndex+1].GetValue(TrooperTypeData.instance);
+            thisTrooper.currentHp = thisTrooper.trooperDataType.maxHp;
         }
+
+        DrawDefaultInspector();
     }
 }

@@ -19,6 +19,7 @@ public enum TrooperType{trooper1}
 [System.Serializable]
 public class TrooperDataType
 {
+    public string name;
     public int maxHp;
     public int xpForLvl2;
     public int xpForLvl3;

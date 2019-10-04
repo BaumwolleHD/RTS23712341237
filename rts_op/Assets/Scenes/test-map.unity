@@ -467,8 +467,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a2f4a12ffb5abc94ea730f742a25fc3d, type: 3}
+--- !u!1 &910713681 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4784424860928624331, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+    type: 3}
+  m_PrefabInstance: {fileID: 910713680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &910713682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910713681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8310f21c9533b04787b60bba87e5b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHp: 20
+  currentXp: 0
+  trooperDataType:
+    name: 
+    maxHp: 20
+    xpForLvl2: 10
+    xpForLvl3: 60
+    primaryAttackDamage: 50
+    secondaryAttackDamage: 0
+    attackRange: 1
+    attackSpeed: 1
+    movementSpeed: 1.2
 --- !u!1 &967343049
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +589,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1115934497
 GameObject:
@@ -718,6 +749,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: currentHp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.name
+      value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.maxHp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl2
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl3
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.primaryAttackDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376380344724037025, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.movementSpeed
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2f4a12ffb5abc94ea730f742a25fc3d, type: 3}

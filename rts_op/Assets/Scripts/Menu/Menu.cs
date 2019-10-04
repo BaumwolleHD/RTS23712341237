@@ -8,6 +8,14 @@ public class Menu : MonoBehaviourPunCallbacks
 {
     public float mapXMax = 900;
     public float mapYMax = 600;
+    
+    public static Menu instance;
+
+    private void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(this);
+    }
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
