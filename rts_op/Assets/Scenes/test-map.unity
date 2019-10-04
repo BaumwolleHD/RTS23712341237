@@ -414,6 +414,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trooper (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: currentHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.maxHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.primaryAttackDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.movementSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -525,6 +570,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trooper (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: currentHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.maxHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.primaryAttackDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.movementSpeed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
         type: 3}
@@ -876,6 +966,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trooper (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: currentHp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.name
+      value: Trooper 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.maxHp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl2
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl3
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.primaryAttackDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.movementSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -945,6 +1080,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trooper
       objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: currentHp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.name
+      value: Trooper 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.maxHp
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl2
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl3
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.primaryAttackDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.movementSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1000,6 +1180,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7551450398545983058, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: m_Speed
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2f4a12ffb5abc94ea730f742a25fc3d, type: 3}
 --- !u!1001 &1811875755
@@ -1013,6 +1198,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trooper (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: currentHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.maxHp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.xpForLvl3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.primaryAttackDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.attackSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3173691123234221251, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: trooperDataType.movementSpeed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
         type: 3}

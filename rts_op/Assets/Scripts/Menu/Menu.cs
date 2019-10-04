@@ -13,6 +13,11 @@ public class Menu : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        if(instance)
+        {
+            Destroy(this);
+            return;
+        }
         instance = this;
         DontDestroyOnLoad(this);
     }

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4638837791081428029}
   - component: {fileID: 4934185902019463177}
   - component: {fileID: 4218960292854265976}
-  - component: {fileID: 3376380344724037025}
   - component: {fileID: -7551450398545983058}
+  - component: {fileID: -3173691123234221251}
   m_Layer: 0
   m_Name: Trooper
   m_TagString: Untagged
@@ -53,7 +53,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -93,7 +93,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3376380344724037025
+--- !u!195 &-7551450398545983058
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4784424860928624331}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.3
+  m_Speed: 38.6
+  m_Acceleration: 30
+  avoidancePriority: 50
+  m_AngularSpeed: 170
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.99999994
+  m_BaseOffset: 0.49999997
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-3173691123234221251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,30 +134,8 @@ MonoBehaviour:
     maxHp: 20
     xpForLvl2: 10
     xpForLvl3: 60
-    primaryAttackDamage: 50
+    primaryAttackDamage: 60
     secondaryAttackDamage: 0
     attackRange: 1
     attackSpeed: 1
-    movementSpeed: 1.2
---- !u!195 &-7551450398545983058
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784424860928624331}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.3
-  m_Speed: 30
-  m_Acceleration: 30
-  avoidancePriority: 50
-  m_AngularSpeed: 170
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 0.99999994
-  m_BaseOffset: 0.49999997
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+    movementSpeed: 38.6
