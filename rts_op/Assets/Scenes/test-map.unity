@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465639, g: 0.49639827, b: 0.5748098, a: 1}
+  m_IndirectSpecularColor: {r: 0.44656438, g: 0.49639928, b: 0.5748108, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 4767646742592796426, guid: b10c0bc958ca5c4408e89843ab6a7212,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4767646742592796426, guid: b10c0bc958ca5c4408e89843ab6a7212,
         type: 3}
@@ -259,7 +259,7 @@ PrefabInstance:
     - target: {fileID: 2221606434777902113, guid: ca6bcba833f15004484c5c6d18a544c1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2221606434777902113, guid: ca6bcba833f15004484c5c6d18a544c1,
         type: 3}
@@ -322,7 +322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &675577777
 MonoBehaviour:
@@ -518,7 +518,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50.041004, y: -69.328, z: 12.328001}
 --- !u!1 &1115934497
 GameObject:
@@ -609,253 +609,35 @@ Transform:
   m_LocalScale: {x: 900, y: 1, z: 600}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1302938607
-PrefabInstance:
+--- !u!1 &1483328143
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4784424860928624331, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_Name
-      value: Trooper
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.0703125
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7551450398545983058, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_Speed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: currentHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: lastChoiceIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.name
-      value: Trooper 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.xpForLvl2
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.xpForLvl3
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.primaryAttackDamage
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.attackRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.attackSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.movementSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a2f4a12ffb5abc94ea730f742a25fc3d, type: 3}
---- !u!1001 &1973335145
-PrefabInstance:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 864355630}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1483328144}
+  m_Layer: 0
+  m_Name: strommast (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1483328144
+Transform:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4784424860928624331, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_Name
-      value: Trooper (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7551450398545983058, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: m_Speed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: currentHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: lastChoiceIndex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.name
-      value: Trooper 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.maxHp
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.xpForLvl2
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.xpForLvl3
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.primaryAttackDamage
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.attackRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.attackSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: trooperDataType.movementSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a2f4a12ffb5abc94ea730f742a25fc3d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 864355630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483328143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

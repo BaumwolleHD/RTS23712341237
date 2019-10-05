@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
@@ -9,10 +10,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(PhotonView))]
+[RequireComponent(typeof(TransformSynchronizer))]
 [RequireComponent(typeof(Damageable))]
-public class Unit : MonoBehaviour
+public class Unit : NetMonoBehaviour
 {
     public int currentXp;
+
+    public Material team1mat;
+    public Material team2mat;
 
     [HideInInspector]
     public int lastChoiceIndex = -1;
@@ -27,11 +33,20 @@ public class Unit : MonoBehaviour
         {
             GetComponent<NavMeshAgent>().speed = trooperDataType.movementSpeed;
         }
+
+        MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+
+        Material newMat = OwnerActorNumber == 1 ? team1mat : team2mat;
+
+        if(newMat != meshRenderer.sharedMaterial)
+        {
+            meshRenderer.sharedMaterial = newMat;
+        }
     }
 
-    void Update()
+    void WalkToMouse()
     {
-        if(!Camera.main)
+        if (!Camera.main)
         {
             return;
         }
@@ -43,6 +58,20 @@ public class Unit : MonoBehaviour
             pos = hit.point;
         }
         GetComponent<NavMeshAgent>().destination = pos;
+    }
+
+    void Update()
+    {
+        if(photonView.IsMine && !Menu.instance.isPaused) WalkToMouse();
+        HandleDeath();
+    }
+
+    void HandleDeath()
+    {
+        if (GetComponent<Damageable>().isDead)
+        {
+            Destroy();
+        }
     }
 }
 

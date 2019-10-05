@@ -4,25 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Building))]
-public class Basis : MonoBehaviourPun
+public class Basis : NetMonoBehaviour
 {
     public BaseData playerData;
 
-    public void ApplyDamage(float damage)
-    {
-        throw new System.NotImplementedException();
-    }
-
     void Awake()
     {
-        ((PlayerManager)photonView.Owner.TagObject).basisBuilding = this;
     }
 
     void Start()
     {
-        string basePosition = "base" + photonView.Owner.ActorNumber.ToString() + "Position"; //TODO: Turn into array
-        transform.position = (Vector3)PhotonNetwork.CurrentRoom.CustomProperties[basePosition];
-        Debug.Log(basePosition);
+        transform.position = ((Vector3[])PhotonNetwork.CurrentRoom.CustomProperties["basePosition"])[OwnerActorNumber-1];
+        ((PlayerManager)photonView.Owner.TagObject).basisBuilding = this;
     }
 
     private void Update()
