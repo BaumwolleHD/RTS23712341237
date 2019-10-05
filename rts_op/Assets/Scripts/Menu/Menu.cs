@@ -8,6 +8,7 @@ public class Menu : MonoBehaviourPunCallbacks
 {
     public float mapXMax = 900;
     public float mapYMax = 600;
+    public bool isPaused;
     
     public static Menu instance;
 
@@ -49,5 +50,20 @@ public class Menu : MonoBehaviourPunCallbacks
         roomOps.CustomRoomProperties.Add("base1Position", baseCalcVector);
         roomOps.CustomRoomProperties.Add("base2Position", -baseCalcVector + new Vector3(0, 15, 0));
         PhotonNetwork.CreateRoom(null, roomOps);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPaused = !isPaused;
+            if (isPaused)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+        }
     }
 }

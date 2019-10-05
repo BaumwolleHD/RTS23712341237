@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
+#if UNITY_EDITOR
 using UnityEditor.SceneManagement;
+#endif
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -40,6 +42,7 @@ public class Trooper : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(Trooper))]
 public class TrooperEditor : Editor
 {
@@ -93,3 +96,4 @@ public class TrooperEditor : Editor
 
     }
 }
+#endif
