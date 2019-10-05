@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct PlayerData
+public struct BaseData
 {
     public int xp;
     public int gold;

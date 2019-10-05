@@ -3,25 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrooperTypeData : MonoBehaviour
+public class UnitTypes : MonoBehaviour
 {
-    public TrooperDataType trooper1;
-    public TrooperDataType trooper2;
+    public UnitData trooper1;
+    public UnitData trooper2;
 
-    public static TrooperTypeData instance;
+    public static UnitTypes instance;
     void Awake()
     {
         instance = this;
         DontDestroyOnLoad(this);
     }
 }
-public enum TrooperType{trooper1}
 
 [System.Serializable]
-public class TrooperDataType
+public class UnitData
 {
     public string name;
-    public int maxHp;
+    public float maxHp;
     public int xpForLvl2;
     public int xpForLvl3;
     public int primaryAttackDamage;

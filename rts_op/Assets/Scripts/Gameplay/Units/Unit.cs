@@ -9,19 +9,19 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
-public class Trooper : MonoBehaviour
+[RequireComponent(typeof(Damageable))]
+public class Unit : MonoBehaviour
 {
-    public int currentHp;
     public int currentXp;
 
     [HideInInspector]
     public int lastChoiceIndex = -1;
 
-    public TrooperDataType trooperDataType;
+    public UnitData trooperDataType;
 
     public void Start()
     {
-        currentHp = trooperDataType.maxHp;
+        GetComponent<Damageable>().currentHp = trooperDataType.maxHp;
 
         if (GetComponent<NavMeshAgent>().speed != trooperDataType.movementSpeed)
         {
@@ -31,6 +31,10 @@ public class Trooper : MonoBehaviour
 
     void Update()
     {
+        if(!Camera.main)
+        {
+            return;
+        }
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Vector3 pos = Vector3.zero;
@@ -43,13 +47,13 @@ public class Trooper : MonoBehaviour
 }
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(Trooper))]
+[CustomEditor(typeof(Unit))]
 public class TrooperEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        Trooper thisTrooper = target as Trooper;
+        Unit thisTrooper = target as Unit;
         
 
         if (!Application.isPlaying && !GameObject.Find("GlobalData"))
@@ -57,9 +61,9 @@ public class TrooperEditor : Editor
             EditorSceneManager.OpenScene("Assets/Scenes/Menu.unity", OpenSceneMode.Additive);
         }
 
-        TrooperTypeData trooperTypeData = GameObject.Find("GlobalData").GetComponent<TrooperTypeData>();
+        UnitTypes trooperTypeData = GameObject.Find("GlobalData").GetComponent<UnitTypes>();
 
-        FieldInfo[] fields = typeof(TrooperTypeData).GetFields();
+        FieldInfo[] fields = typeof(UnitTypes).GetFields();
         List<string> trooperTypes = new List<string>();
         int count = 0;
 
@@ -69,9 +73,9 @@ public class TrooperEditor : Editor
             count++;
             if (field.Name != "instance")
             {
-                string name = ((TrooperDataType)field.GetValue(trooperTypeData)).name;
+                string name = ((UnitData)field.GetValue(trooperTypeData)).name;
                 trooperTypes.Add("(" + count.ToString() + ") " + (name != "" ? name : "Namenlos"));
-                if (((TrooperDataType)field.GetValue(trooperTypeData)) == thisTrooper.trooperDataType)
+                if (((UnitData)field.GetValue(trooperTypeData)) == thisTrooper.trooperDataType)
                 {
                     currentIndex = count - 1;
                 }
@@ -85,7 +89,7 @@ public class TrooperEditor : Editor
         int choiceIndex = EditorGUILayout.Popup("Unit-type", currentIndex, trooperTypes.ToArray());
         if(choiceIndex != thisTrooper.lastChoiceIndex)
         {
-            thisTrooper.trooperDataType = (TrooperDataType)trooperTypeData.GetType().GetFields()[choiceIndex].GetValue(trooperTypeData);
+            thisTrooper.trooperDataType = (UnitData)trooperTypeData.GetType().GetFields()[choiceIndex].GetValue(trooperTypeData);
             thisTrooper.lastChoiceIndex = choiceIndex;
         }
 
@@ -94,6 +98,7 @@ public class TrooperEditor : Editor
             thisTrooper.Start();
         }
 
+        thisTrooper.GetComponent<Damageable>().maxHp = thisTrooper.trooperDataType.maxHp;
     }
 }
 #endif
