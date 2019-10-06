@@ -103,7 +103,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 1
+  m_Speed: 1.2
   m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 170
@@ -127,16 +127,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8310f21c9533b04787b60bba87e5b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHp: 1
+  currentHp: 20
   currentXp: 0
-  lastChoiceIndex: 1
+  lastChoiceIndex: 0
   trooperDataType:
-    name: Trooper 2
-    maxHp: 1
-    xpForLvl2: 1
-    xpForLvl3: 1
-    primaryAttackDamage: 1
-    secondaryAttackDamage: 1
+    name: Trooper 1
+    maxHp: 20
+    xpForLvl2: 10
+    xpForLvl3: 60
+    primaryAttackDamage: 50
+    secondaryAttackDamage: 0
     attackRange: 1
     attackSpeed: 1
-    movementSpeed: -8.8
+    movementSpeed: 1.2
