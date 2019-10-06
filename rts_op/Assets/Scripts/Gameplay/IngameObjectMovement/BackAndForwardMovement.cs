@@ -12,21 +12,21 @@ public class BackAndForwardMovement : MonoBehaviour
 
     private void Start()
     {
-        startPosition = transform.position;
+        startPosition = transform.localPosition;
         currentObjectMovement = objectMovement;
         objectMovementSpeedPerFrame = objectMovementSpeed * Time.deltaTime;
     }
 
     void Update()
     {
-        if (Vector3.Distance(startPosition, transform.position) >= objectMovement.magnitude)
+        if (Vector3.Distance(startPosition, transform.localPosition) >= objectMovement.magnitude)
         {
             currentObjectMovement = -objectMovement;
         }
-        if (Vector3.Distance(startPosition + objectMovement, transform.position) >= objectMovement.magnitude)
+        if (Vector3.Distance(startPosition + objectMovement, transform.localPosition) >= objectMovement.magnitude)
         {
             currentObjectMovement = objectMovement;
         }
-        transform.position += objectMovementSpeedPerFrame * currentObjectMovement;
+        transform.localPosition += objectMovementSpeedPerFrame * currentObjectMovement;
     }
 }

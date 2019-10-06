@@ -19,7 +19,7 @@ public class PlayerManager : NetMonoBehaviour
             GetComponent<Hotkeys>().enabled = true;
             GetComponent<Camera>().enabled = true;
             GetComponent<AudioListener>().enabled = true;
-            PhotonNetwork.Instantiate("Base", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+            PhotonNetwork.Instantiate("base_lvl1_with_textures", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
             Cursor.lockState = CursorLockMode.Confined;
         }
     }
