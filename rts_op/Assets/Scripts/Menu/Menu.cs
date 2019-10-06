@@ -43,12 +43,12 @@ public class Menu : MonoBehaviourPunCallbacks
     }
     public void CreateRandomRoom()
     {
-        Vector3 baseCalcVector = new Vector3(Random.Range(mapXMax - 25f, 150), 7.5f, Random.Range(mapYMax - 25f, -mapYMax + 25f));
+        Vector3 baseCalcVector = new Vector3(Random.Range(mapXMax - 25f, 150), 0.5f, Random.Range(mapYMax - 25f, -mapYMax + 25f));
         Debug.Log("Creating random room");
         var roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 2 };
         roomOps.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
         roomOps.CustomRoomProperties.Add("seed", Random.Range(-200000000, 200000000));
-        roomOps.CustomRoomProperties.Add("basePosition", new Vector3[] { baseCalcVector, -baseCalcVector + new Vector3(0, 15, 0)});
+        roomOps.CustomRoomProperties.Add("basePosition", new Vector3[] { baseCalcVector, -baseCalcVector});
         PhotonNetwork.CreateRoom(null, roomOps);
     }
     private void Update()

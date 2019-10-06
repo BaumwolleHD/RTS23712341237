@@ -16,6 +16,7 @@ public class Basis : NetMonoBehaviour
     {
         transform.position = ((Vector3[])PhotonNetwork.CurrentRoom.CustomProperties["basePosition"])[OwnerActorNumber-1];
         ((PlayerManager)photonView.Owner.TagObject).basisBuilding = this;
+        Camera.main.GetComponent<CameraMovement>().LookAtBase();
     }
 
     private void Update()

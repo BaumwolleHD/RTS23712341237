@@ -19,6 +19,11 @@ public class NetMonoBehaviour : MonoBehaviourPun
         }
     }
 
+    public PlayerManager GetPlayerManager()
+    {
+        return ((PlayerManager)photonView.Owner.TagObject);
+    }
+
     /// <summary>
     /// Player number of the player owning this GameObject (starts with 1!)
     /// </summary>

@@ -2,17 +2,18 @@
 using Unity.Collections;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraMovement : NetMonoBehaviour
 {
     public float cameraSpeed = 10;
     public float zoomSpeed = 30;
     public float rotationSpeed = 30;
     public int movementMargin = 10;
-    private Vector3 startRotation;
+    private Quaternion startRotation;
+    Vector2 lastMousePosition;
 
     private void Start()
     {
-        startRotation = transform.eulerAngles;
+        startRotation = transform.localRotation;
     }
 
     void Update()
@@ -28,11 +29,16 @@ public class CameraMovement : MonoBehaviour
 
         RotateAroundCenterOfView();
 
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            GetComponent<Transform>().position = new Vector3(60, 70, 60);
-            transform.Rotate(-transform.eulerAngles + startRotation, Space.World);
+            LookAtBase();
         }
+    }
+
+    public void LookAtBase()
+    {
+        transform.position = GetPlayerManager().basisBuilding.transform.position + new Vector3(60, 70, 60);
+        transform.localRotation = startRotation;
     }
 
     private void RotateAroundCenterOfView()
@@ -44,15 +50,17 @@ public class CameraMovement : MonoBehaviour
         {
             pos = hit.point;
         }
-        float rotationSpeedPerFrame = rotationSpeed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.Q))
+        Vector2 rotationSkalator = new Vector2(rotationSpeed * (lastMousePosition.x - Input.mousePosition.x), rotationSpeed * (lastMousePosition.y - Input.mousePosition.y));    
+        
+        if (Input.GetMouseButton(2))
         {
-            transform.RotateAround(pos, Vector3.up, rotationSpeedPerFrame);
+            transform.RotateAround(pos, Vector3.up, rotationSkalator.x);
+
+            Vector3 arschFick = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, Vector3.up) * Vector3.left;
+
+            transform.RotateAround(pos, arschFick, -rotationSkalator.y);
         }
-        if (Input.GetKey(KeyCode.E))
-        {
-            transform.RotateAround(pos, Vector3.up, -rotationSpeedPerFrame);
-        }
+        lastMousePosition = Input.mousePosition;
     }
 
     private void Zoom()
