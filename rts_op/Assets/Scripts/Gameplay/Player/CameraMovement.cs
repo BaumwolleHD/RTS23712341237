@@ -37,7 +37,7 @@ public class CameraMovement : MonoBehaviour
 
     private void RotateAroundCenterOfView()
     {
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f));
+        Ray ray = GetComponent<Camera>().ScreenPointToRay(new Vector3(Screen.width/2f,Screen.height/2f));
         RaycastHit hit;
         Vector3 pos = Vector3.zero;
         if (Physics.Raycast(ray, out hit))
