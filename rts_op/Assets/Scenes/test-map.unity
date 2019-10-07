@@ -708,7 +708,65 @@ PrefabInstance:
     - {fileID: 6926673322407668293, guid: ca6bcba833f15004484c5c6d18a544c1, type: 3}
     - {fileID: 5492593565156368002, guid: ca6bcba833f15004484c5c6d18a544c1, type: 3}
     - {fileID: 3746242373619114128, guid: ca6bcba833f15004484c5c6d18a544c1, type: 3}
+    - {fileID: 2208547883281511444, guid: ca6bcba833f15004484c5c6d18a544c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ca6bcba833f15004484c5c6d18a544c1, type: 3}
+--- !u!4 &1462321964 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6785424355308465895, guid: ca6bcba833f15004484c5c6d18a544c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462321963}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1506350878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1506350879}
+  - component: {fileID: 1506350880}
+  m_Layer: 0
+  m_Name: DoorLink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1506350879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506350878}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1462321964}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
+--- !u!114 &1506350880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506350878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_StartPoint: {x: -2.7964668, y: 4.55218, z: -0.14964302}
+  m_EndPoint: {x: 2.0327644, y: 4.5967846, z: 0.06273644}
+  m_Width: 2.62
+  m_CostModifier: -1
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
 --- !u!4 &1589158565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3649524122547662711, guid: ca6bcba833f15004484c5c6d18a544c1,
