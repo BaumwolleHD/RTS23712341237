@@ -15,5 +15,5 @@ MonoBehaviour:
   teamMaterials:
   - {fileID: 2100000, guid: b957742c5b9bfd441b9b330c8b55d0c5, type: 2}
   - {fileID: 2100000, guid: 4e1a4e79a3548164da24123dbb0f3566, type: 2}
-  mapXMax: 900
-  mapYMax: 600
+  mapXMax: 200
+  mapYMax: 200

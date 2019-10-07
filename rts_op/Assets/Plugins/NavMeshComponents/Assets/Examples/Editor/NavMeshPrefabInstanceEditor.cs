@@ -70,6 +70,9 @@ class NavMeshPrefabInstanceEditor : Editor
         var sources = new List<NavMeshBuildSource>();
         var markups = new List<NavMeshBuildMarkup>();
 
+        Debug.Log(instance.gameObject.scene.name);
+        Debug.Log("Test");
+
         UnityEditor.AI.NavMeshBuilder.CollectSourcesInStage(
             root, ~0, NavMeshCollectGeometry.RenderMeshes, 0, markups, instance.gameObject.scene, sources);
         var settings = NavMesh.GetSettingsByID(0);
