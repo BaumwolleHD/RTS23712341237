@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class Menu : MonoBehaviourPunCallbacks
 {
-    public float mapXMax = 900;
-    public float mapYMax = 600;
     public bool isPaused;
     
     public static Menu instance;
+
+    public MapSettings map;
 
     private void Awake()
     {
@@ -43,7 +43,7 @@ public class Menu : MonoBehaviourPunCallbacks
     }
     public void CreateRandomRoom()
     {
-        Vector3 baseCalcVector = new Vector3(Random.Range(mapXMax - 25f, 150), 0.5f, Random.Range(mapYMax - 25f, -mapYMax + 25f));
+        Vector3 baseCalcVector = new Vector3(Random.Range(map.mapXMax - 25f, 150), 0.5f, Random.Range(map.mapYMax - 25f, -map.mapYMax + 25f));
         Debug.Log("Creating random room");
         var roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 2 };
         roomOps.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();

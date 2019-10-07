@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 5222695526024813536}
   - component: {fileID: 97926294118792984}
   - component: {fileID: 5266943295668681983}
-  - component: {fileID: 7968995059920701451}
   - component: {fileID: 4535830400345052439}
   m_Layer: 0
   m_Name: Trooper
@@ -133,19 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentXp: 0
-  team1mat: {fileID: 2100000, guid: e8b4dfbc6e77dd648a620a779a71f1b5, type: 2}
-  team2mat: {fileID: 2100000, guid: a3743172f8650f34da51329e9c7bc8a9, type: 2}
   lastChoiceIndex: 0
-  trooperDataType:
-    name: Trooper 1
-    maxHp: 125
-    xpForLvl2: 10
-    xpForLvl3: 60
-    primaryAttackDamage: 50
-    secondaryAttackDamage: 0
-    attackRange: 1
-    attackSpeed: 1
-    movementSpeed: 30
+  trooperData: {fileID: 11400000, guid: 82a3c3a9af3891741984bcc35a073a65, type: 2}
 --- !u!114 &97926294118792984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,19 +171,6 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &7968995059920701451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784424860928624331}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84485c2d0f914774dbbbb505326722f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dps: 5
 --- !u!114 &4535830400345052439
 MonoBehaviour:
   m_ObjectHideFlags: 0

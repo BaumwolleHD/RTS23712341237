@@ -19,9 +19,20 @@ public class NetMonoBehaviour : MonoBehaviourPun
         }
     }
 
-    public PlayerManager GetPlayerManager()
+    public PlayerManager playerManager
     {
-        return ((PlayerManager)photonView.Owner.TagObject);
+        get
+        {
+            return ((PlayerManager)photonView.Owner.TagObject);
+        }
+    }
+
+    public GameManager gameManager
+    {
+        get
+        {
+            return FindObjectOfType<GameManager>();
+        }
     }
 
     /// <summary>

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public MapSettings mapSettings;
+
     private void Start()
     {
         if(!PhotonNetwork.IsConnected)
@@ -17,4 +19,13 @@ public class GameManager : MonoBehaviour
             PhotonNetwork.Instantiate("Player", new Vector3(60, 70, 60), Quaternion.Euler(40, -130, 0));
         }
     }
+}
+
+
+[CreateAssetMenu(fileName = "Data", menuName = "MapSettings")]
+public class MapSettings : ScriptableObject
+{
+    public Material[] teamMaterials;
+    public float mapXMax = 900;
+    public float mapYMax = 600;
 }
