@@ -25,7 +25,7 @@ public class CameraMovement : NetMonoBehaviour
         
         Zoom();
 
-        MarginMovement();
+        if(!Input.GetMouseButton(2)) MarginMovement();
 
         RotateAroundCenterOfView();
 
@@ -37,7 +37,7 @@ public class CameraMovement : NetMonoBehaviour
 
     public void LookAtBase()
     {
-        transform.position = GetPlayerManager().basisBuilding.transform.position + new Vector3(60, 70, 60);
+        transform.position = playerManager.basisBuilding.transform.position + new Vector3(60, 70, 60);
         transform.localRotation = startRotation;
     }
 
@@ -50,8 +50,9 @@ public class CameraMovement : NetMonoBehaviour
         {
             pos = hit.point;
         }
-        Vector2 rotationSkalator = new Vector2(rotationSpeed * (lastMousePosition.x - Input.mousePosition.x), rotationSpeed * (lastMousePosition.y - Input.mousePosition.y));    
+        Vector2 rotationSkalator = new Vector2(rotationSpeed * (lastMousePosition.x - Input.mousePosition.x), rotationSpeed * (lastMousePosition.y - Input.mousePosition.y));
         
+
         if (Input.GetMouseButton(2))
         {
             transform.RotateAround(pos, Vector3.up, rotationSkalator.x);
@@ -60,6 +61,7 @@ public class CameraMovement : NetMonoBehaviour
 
             transform.RotateAround(pos, arschFick, -rotationSkalator.y);
         }
+
         lastMousePosition = Input.mousePosition;
     }
 
