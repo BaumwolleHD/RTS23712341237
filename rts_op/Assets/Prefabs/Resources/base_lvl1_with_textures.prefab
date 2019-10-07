@@ -397,6 +397,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: base_lvl1_with_textures
       objectReference: {fileID: 0}
+    - target: {fileID: 6922340161142340309, guid: cae9e8ecfac420e4fbb8777bdf8329fe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.29
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: cae9e8ecfac420e4fbb8777bdf8329fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,11 +471,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5959
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922340161142340309, guid: cae9e8ecfac420e4fbb8777bdf8329fe,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: -2700194178795864487, guid: cae9e8ecfac420e4fbb8777bdf8329fe,
         type: 3}
