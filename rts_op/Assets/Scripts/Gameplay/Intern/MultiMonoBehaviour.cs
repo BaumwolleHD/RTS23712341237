@@ -19,7 +19,7 @@ public class NetMonoBehaviour : MonoBehaviourPun
         }
     }
 
-    public PlayerManager playerManager
+    public PlayerManager ownerPlayerManager
     {
         get
         {

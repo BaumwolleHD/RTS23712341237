@@ -37,7 +37,7 @@ public class CameraMovement : NetMonoBehaviour
 
     public void LookAtBase()
     {
-        transform.position = playerManager.basisBuilding.transform.position + new Vector3(60, 70, 60);
+        transform.position = ownerPlayerManager.basisBuilding.transform.position + new Vector3(60, 70, 60);
         transform.localRotation = startRotation;
     }
 
