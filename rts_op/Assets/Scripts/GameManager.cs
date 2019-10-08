@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public float gameTime;
     public MapSettings mapSettings;
-    public bool playerSpawned;
+    public int playerCount;
+
+    public List<PlayerManager> allPlayers;
 
     private void Start()
     {
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (playerSpawned)
+        if (playerCount > 1)
         {
             Timer();
         }

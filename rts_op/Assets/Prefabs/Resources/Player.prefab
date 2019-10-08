@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basisBuilding: {fileID: 0}
+  playerNumber: 0
 --- !u!114 &-8579383023886804274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,5 +164,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e2d366566714a41aaaabc01593e6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitToSpawn: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+  unitToSpawn: {fileID: 6410460033778368794, guid: cb385bea4e53cdb44bbbc9105fad9d63,
     type: 3}

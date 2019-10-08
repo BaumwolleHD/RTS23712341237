@@ -7,6 +7,7 @@ using UnityEngine;
 public class Basis : NetMonoBehaviour
 {
     public BaseData playerData;
+    public PlayerManager owningPlayer;
 
     void Awake()
     {
@@ -14,12 +15,16 @@ public class Basis : NetMonoBehaviour
 
     void Start()
     {
-        transform.position = ((Vector3[])PhotonNetwork.CurrentRoom.CustomProperties["basePosition"])[OwnerActorNumber-1];
-        ((PlayerManager)photonView.Owner.TagObject).basisBuilding = this;
-        Camera.main.GetComponent<CameraMovement>().LookAtBase();
+        transform.position = ((Vector3[])PhotonNetwork.CurrentRoom.CustomProperties["basePosition"])[owningPlayer.playerNumber];
+        
+        if(owningPlayer.isRealPlayer)
+        {
+            Camera.main.GetComponent<CameraMovement>().LookAtBase();
+        }
     }
 
     private void Update()
     {
+
     }
 }

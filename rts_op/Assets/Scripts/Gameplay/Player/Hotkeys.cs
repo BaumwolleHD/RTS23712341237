@@ -9,7 +9,7 @@ public class Hotkeys : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.U))
         {
-            PhotonNetwork.Instantiate(unitToSpawn.name, Vector3.one, Quaternion.identity);
+            GetComponent<PlayerManager>().SpawnUnit(unitToSpawn);
         }
     }
 }

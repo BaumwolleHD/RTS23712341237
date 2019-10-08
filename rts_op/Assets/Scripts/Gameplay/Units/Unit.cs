@@ -20,86 +20,52 @@ public class Unit : NetMonoBehaviour
     [HideInInspector]
     public int lastChoiceIndex = -1;
 
-    public UnitData trooperData;
+    public UnitData unitData;
+
+    public PlayerManager unitOwner;
 
     public void Start()
     {
-        GetComponent<Damageable>().currentHp = trooperData.maxHp;
+        GetComponent<Damageable>().currentHp = unitData.maxHp;
 
-        if (GetComponent<NavMeshAgent>().speed != trooperData.movementSpeed)
+        if (GetComponent<NavMeshAgent>().speed != unitData.movementSpeed)
         {
-            GetComponent<NavMeshAgent>().speed = trooperData.movementSpeed;
+            GetComponent<NavMeshAgent>().speed = unitData.movementSpeed;
         }
 
         MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
         if (hasOwner)
         {
-            Material newMat = OwnerActorNumber == 1 ? gameManager.mapSettings.teamMaterials[0] : gameManager.mapSettings.teamMaterials[1];
+            Material newMat = unitOwner.playerNumber == 1 ? gameManager.mapSettings.teamMaterials[0] : gameManager.mapSettings.teamMaterials[1];
             if (newMat != meshRenderer.sharedMaterial)
             {
                 meshRenderer.sharedMaterial = newMat;
             }
         }
+
+        if(!isNPC)
+        {
+            WalkToBase();
+        }
+        else
+        {
+            WalkTo(transform.position + (Vector3.one * Random.Range(0.2f,1f)));
+        }
     }
-    
 
-    private Color c = Color.white;
+    public bool isNPC { get { return unitOwner == null; } }
 
-    IEnumerator DrawPath(NavMeshPath path)
+    void WalkToBase()
     {
-        yield return new WaitForEndOfFrame();
-        if (path.corners.Length >= 2)
-        {
-            switch (path.status)
-            {
-                case NavMeshPathStatus.PathComplete:
-                    c = Color.white;
-                    break;
-                case NavMeshPathStatus.PathInvalid:
-                    c = Color.red;
-                    break;
-                case NavMeshPathStatus.PathPartial:
-                    c = Color.yellow;
-                    break;
-            }
-
-            Vector3 previousCorner = path.corners[0];
-
-            int i = 1;
-            while (i < path.corners.Length)
-            {
-                Vector3 currentCorner = path.corners[i];
-                Debug.DrawLine(previousCorner, currentCorner, c, 0.1f);
-                previousCorner = currentCorner;
-                i++;
-            }
-        }
-
+        WalkTo(unitOwner.basisBuilding.transform.position);
     }
 
-    void WalkToMouse()
+    void WalkTo(Vector3 destination)
     {
-        if (!Camera.main)
-        {
-            return;
-        }
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.blue, 1f);
-        RaycastHit hit;
-        Vector3 pos = Vector3.zero;
-        if (Physics.Raycast(ray, out hit))
-        {
-            pos = hit.point;
-        }
-        GetComponent<NavMeshAgent>().destination = pos;
-        IEnumerator e = DrawPath(GetComponent<NavMeshAgent>().path);
-        StartCoroutine(e);
-
+        GetComponent<NavMeshAgent>().destination = destination;
     }
-
     void Update()
     {
-        if(photonView.IsMine && !Menu.instance.isPaused) WalkToMouse();
         HandleDeath();
         
     }

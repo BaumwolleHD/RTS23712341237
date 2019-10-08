@@ -17,7 +17,9 @@ public class Camp : NetMonoBehaviour
         {
             for (int i = 0; i < Random.Range(minUnitCount, maxUnitCount); i++)
             {
-                PhotonNetwork.InstantiateSceneObject(unitType.name, transform.position, new Quaternion());
+                GameObject newUnit = PhotonNetwork.InstantiateSceneObject(unitType.name, transform.position, new Quaternion());
+                newUnit.transform.parent = transform;
+
             }
             hasSpawned = true;
         }
