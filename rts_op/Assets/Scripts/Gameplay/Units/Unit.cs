@@ -26,6 +26,8 @@ public class Unit : NetMonoBehaviour
 
     public void Start()
     {
+        this.PutOnGround();
+
         GetComponent<Damageable>().currentHp = unitData.maxHp;
 
         if (GetComponent<NavMeshAgent>().speed != unitData.movementSpeed)

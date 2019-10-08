@@ -10,7 +10,7 @@ public class PlayerManager : NetMonoBehaviour
 
     private void Awake()
     {
-        if(isRealPlayer)
+        if(isRealPlayer && PhotonNetwork.IsConnected)
         {
             photonView.Owner.TagObject = this;
         }

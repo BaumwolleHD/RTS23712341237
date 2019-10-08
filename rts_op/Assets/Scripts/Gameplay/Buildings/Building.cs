@@ -1,7 +1,4 @@
 ﻿using Photon.Pun;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using UnityEngine;
 
 [RequireComponent(typeof(PhotonView))]
@@ -25,6 +22,8 @@ public class Building : MonoBehaviour
 
     void Start()
     {
+        this.PutOnGround();
+
         initialScale = transform.localScale;
         remainingBuildTime = buildTime;
     }
@@ -38,23 +37,3 @@ public class Building : MonoBehaviour
         }
     }
 }
-
-
-#if UNITY_EDITOR
-[CustomEditor(typeof(Building)), CanEditMultipleObjects]
-public class BuildingEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        Building targetBuilding = (target as Building);
-        if (!Application.isPlaying)
-        {
-            targetBuilding.remainingBuildTime = targetBuilding.buildTime;
-        }
-        GUI.enabled = false;
-        EditorGUILayout.Toggle("Is built", targetBuilding.isBuilt);
-        GUI.enabled = true;
-        DrawDefaultInspector();
-    }
-}
-#endif

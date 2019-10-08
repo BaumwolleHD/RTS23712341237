@@ -133,7 +133,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentXp: 0
   lastChoiceIndex: 0
-  trooperData: {fileID: 11400000, guid: 82a3c3a9af3891741984bcc35a073a65, type: 2}
+  unitData: {fileID: 0}
+  unitOwner: {fileID: 0}
 --- !u!114 &97926294118792984
 MonoBehaviour:
   m_ObjectHideFlags: 0
