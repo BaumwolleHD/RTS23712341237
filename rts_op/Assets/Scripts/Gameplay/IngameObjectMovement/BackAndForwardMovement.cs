@@ -9,6 +9,7 @@ public class BackAndForwardMovement : MonoBehaviour
     private Vector3 currentObjectMovement;
     private Vector3 startPosition;
     private float objectMovementSpeedPerFrame;
+    public bool mooveWayOne = true;
 
     private void Start()
     {
@@ -22,10 +23,12 @@ public class BackAndForwardMovement : MonoBehaviour
         if (Vector3.Distance(startPosition, transform.localPosition) >= objectMovement.magnitude)
         {
             currentObjectMovement = -objectMovement;
+            mooveWayOne = !mooveWayOne;
         }
         if (Vector3.Distance(startPosition + objectMovement, transform.localPosition) >= objectMovement.magnitude)
         {
             currentObjectMovement = objectMovement;
+            mooveWayOne = !mooveWayOne;
         }
         transform.localPosition += objectMovementSpeedPerFrame * currentObjectMovement;
     }

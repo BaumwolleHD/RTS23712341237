@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public class HUD : MonoBehaviour
+public class HUD : NetMonoBehaviour
 {
     public  void OnGUI()
     {
@@ -21,5 +21,9 @@ public class HUD : MonoBehaviour
                 GUI.Label(new Rect(new Vector2(20, 10 * fieldNumber), new Vector2(100, 100)), fieldString);
             }
         }
+        string minutes = Mathf.Floor(gameManager.gameTime / 60).ToString("00");
+        string seconds = (gameManager.gameTime % 60).ToString("00");
+       
+               GUI.Label(new Rect(new Vector2(Screen.width-100, 30), new Vector2( 100, 100)), minutes + ":" + seconds);
     }
 }   

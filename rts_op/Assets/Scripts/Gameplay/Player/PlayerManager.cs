@@ -22,5 +22,9 @@ public class PlayerManager : NetMonoBehaviour
             PhotonNetwork.Instantiate("base_lvl1_with_textures", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
             Cursor.lockState = CursorLockMode.Confined;
         }
+        if (photonView.OwnerActorNr == 2)
+        {
+            gameManager.playerSpawned = true;
+        }
     }
 }

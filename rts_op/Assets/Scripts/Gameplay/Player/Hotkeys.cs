@@ -4,11 +4,12 @@ using Photon.Pun;
 
 public class Hotkeys : MonoBehaviour
 {
+    public Unit unitToSpawn;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.U))
         {
-            PhotonNetwork.Instantiate("Trooper", Vector3.one, Quaternion.identity);
+            PhotonNetwork.Instantiate(unitToSpawn.name, Vector3.one, Quaternion.identity);
         }
     }
 }

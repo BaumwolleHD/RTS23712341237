@@ -32,12 +32,13 @@ public class Unit : NetMonoBehaviour
         }
 
         MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
-
-        Material newMat = OwnerActorNumber == 1 ? gameManager.mapSettings.teamMaterials[0] : gameManager.mapSettings.teamMaterials[1];
-
-        if(newMat != meshRenderer.sharedMaterial)
+        if (hasOwner)
         {
-            meshRenderer.sharedMaterial = newMat;
+            Material newMat = OwnerActorNumber == 1 ? gameManager.mapSettings.teamMaterials[0] : gameManager.mapSettings.teamMaterials[1];
+            if (newMat != meshRenderer.sharedMaterial)
+            {
+                meshRenderer.sharedMaterial = newMat;
+            }
         }
     }
     

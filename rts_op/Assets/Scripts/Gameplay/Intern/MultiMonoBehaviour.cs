@@ -56,4 +56,9 @@ public class NetMonoBehaviour : MonoBehaviourPun
         if (!photonView.ObservedComponents[0]) photonView.ObservedComponents.RemoveAt(0);
         photonView.Synchronization = ViewSynchronization.Unreliable;
     }
+
+    public bool hasOwner
+    {
+        get { return photonView.Owner != null; }
+    }
 }

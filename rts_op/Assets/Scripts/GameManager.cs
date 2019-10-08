@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public float gameTime;
     public MapSettings mapSettings;
+    public bool playerSpawned;
 
     private void Start()
     {
@@ -18,6 +20,17 @@ public class GameManager : MonoBehaviour
         {
             PhotonNetwork.Instantiate("Player", new Vector3(60, 70, 60), Quaternion.Euler(40, -130, 0));
         }
+    }
+    private void Update()
+    {
+        if (playerSpawned)
+        {
+            Timer();
+        }
+    }
+    void Timer()
+    {
+        gameTime += Time.deltaTime;
     }
 }
 
