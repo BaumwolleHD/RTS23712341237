@@ -23,9 +23,11 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (!PhotonNetwork.IsConnected) return;
         if(mapIsReady && !playerSpawned)
         {
             playerSpawned = true;
+            Debug.Log("Spawning player");
             PhotonNetwork.Instantiate("Player", new Vector3(60, 70, 60), Quaternion.Euler(40, -130, 0));
         }
 

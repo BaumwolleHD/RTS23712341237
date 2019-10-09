@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PhotonView))]
 [RequireComponent(typeof(Damageable))]
-public class Building : MonoBehaviour
+public class Building : NetMonoBehaviour
 {
     public bool isBuilt
     {
@@ -22,8 +22,7 @@ public class Building : MonoBehaviour
 
     void Start()
     {
-        this.PutOnGround();
-
+        PutOnGround();
         initialScale = transform.localScale;
         remainingBuildTime = buildTime;
     }

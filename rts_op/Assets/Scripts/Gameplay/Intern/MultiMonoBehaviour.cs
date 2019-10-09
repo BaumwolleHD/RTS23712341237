@@ -61,4 +61,25 @@ public class NetMonoBehaviour : MonoBehaviourPun
     {
         get { return photonView.Owner != null; }
     }
+
+
+    public void PutOnGround()
+    {
+        RaycastHit hit;
+
+        Ray ray = new Ray(new Vector3(transform.position.x, 1000f, transform.position.z), Vector3.down);
+
+        int groundLayer = 1 << 8;
+
+        if (Physics.Raycast(ray, out hit, 2000f, groundLayer))
+        {
+            transform.position = hit.point;
+        }
+        else
+        {
+            Debug.LogError("No ground found for " + name);
+            EditorGUIUtility.PingObject(this);
+            Debug.Break();
+        }
+    }
 }

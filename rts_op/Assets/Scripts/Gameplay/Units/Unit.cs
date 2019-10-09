@@ -26,7 +26,7 @@ public class Unit : NetMonoBehaviour
 
     public void Start()
     {
-        this.PutOnGround();
+        PutOnGround();
 
         GetComponent<Damageable>().currentHp = unitData.maxHp;
 
@@ -35,7 +35,7 @@ public class Unit : NetMonoBehaviour
             GetComponent<NavMeshAgent>().speed = unitData.movementSpeed;
         }
 
-        MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        MeshRenderer meshRenderer = transform.Find("Offset/Torso").GetComponentInChildren<MeshRenderer>();
         if (hasOwner)
         {
             Material newMat = unitOwner.playerNumber == 1 ? gameManager.mapSettings.teamMaterials[0] : gameManager.mapSettings.teamMaterials[1];
@@ -44,8 +44,9 @@ public class Unit : NetMonoBehaviour
                 meshRenderer.sharedMaterial = newMat;
             }
         }
+        PutOnGround();
 
-        if(!isNPC)
+        if (!isNPC)
         {
             WalkToBase();
         }
@@ -57,19 +58,20 @@ public class Unit : NetMonoBehaviour
 
     public bool isNPC { get { return unitOwner == null; } }
 
-    void WalkToBase()
+    public void WalkToBase()
     {
         WalkTo(unitOwner.basisBuilding.transform.position);
     }
 
-    void WalkTo(Vector3 destination)
+    public void WalkTo(Vector3 destination)
     {
         GetComponent<NavMeshAgent>().destination = destination;
     }
     void Update()
     {
         HandleDeath();
-        
+        PutOnGround();//TODO: Do this only once
+
     }
 
     void HandleDeath()

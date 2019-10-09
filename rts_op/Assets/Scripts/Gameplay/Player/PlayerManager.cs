@@ -31,7 +31,7 @@ public class PlayerManager : NetMonoBehaviour
     {
         if (photonView.IsMine)
         {
-            if(isRealPlayer)
+            if(isRealPlayer) //TODO: Put in subclass
             {
                 GetComponent<Hotkeys>().enabled = true;
                 GetComponent<Camera>().enabled = true;

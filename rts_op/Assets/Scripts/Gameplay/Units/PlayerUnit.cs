@@ -24,13 +24,22 @@ public class PlayerUnit : NetMonoBehaviour
         Debug.DrawRay(Camera.main.transform.position, ray.direction, Color.blue, 1f);
         RaycastHit hit;
         Vector3 pos = Vector3.zero;
-        if (Physics.Raycast(ray, out hit))
+
+        int groundLayer = 1 << 8;
+
+        if (Physics.Raycast(ray, out hit, groundLayer))
         {
-            pos = hit.point;
+            Debug.Log(GetComponent<NavMeshAgent>().destination);
+            if(Vector3.Distance(GetComponent<NavMeshAgent>().destination, pos)>0.1f)
+            {
+                GetComponent<NavMeshAgent>().destination = hit.point;
+                Debug.Log(hit.point);
+            }
+            IEnumerator e = DrawPath(GetComponent<NavMeshAgent>().path);
+            StartCoroutine(e);
+            
         }
-        GetComponent<NavMeshAgent>().destination = pos;
-        IEnumerator e = DrawPath(GetComponent<NavMeshAgent>().path);
-        StartCoroutine(e);
+        
 
     }
 

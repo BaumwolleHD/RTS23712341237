@@ -24,11 +24,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUnit
       objectReference: {fileID: 0}
-    - target: {fileID: 5266943295668681983, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
-        type: 3}
-      propertyPath: viewIdField
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
         type: 3}
       propertyPath: unitData
@@ -88,6 +83,11 @@ PrefabInstance:
     - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266943295668681983, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: viewIdField
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
