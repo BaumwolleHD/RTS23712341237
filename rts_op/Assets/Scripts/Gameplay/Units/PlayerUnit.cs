@@ -27,7 +27,7 @@ public class PlayerUnit : NetMonoBehaviour
 
         int groundLayer = 1 << 8;
 
-        if (Physics.Raycast(ray, out hit, groundLayer))
+        if (Physics.Raycast(ray, out hit, 1000f, groundLayer))
         {
             Debug.Log(GetComponent<NavMeshAgent>().destination);
             if(Vector3.Distance(GetComponent<NavMeshAgent>().destination, pos)>0.1f)

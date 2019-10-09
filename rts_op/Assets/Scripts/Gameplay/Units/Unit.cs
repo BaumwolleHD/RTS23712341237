@@ -26,8 +26,6 @@ public class Unit : NetMonoBehaviour
 
     public void Start()
     {
-        PutOnGround();
-
         GetComponent<Damageable>().currentHp = unitData.maxHp;
 
         if (GetComponent<NavMeshAgent>().speed != unitData.movementSpeed)
@@ -44,7 +42,6 @@ public class Unit : NetMonoBehaviour
                 meshRenderer.sharedMaterial = newMat;
             }
         }
-        PutOnGround();
 
         if (!isNPC)
         {
@@ -70,7 +67,6 @@ public class Unit : NetMonoBehaviour
     void Update()
     {
         HandleDeath();
-        PutOnGround();//TODO: Do this only once
 
     }
 

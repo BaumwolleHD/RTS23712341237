@@ -49,6 +49,6 @@ public class PlayerManager : NetMonoBehaviour
 
     public void SpawnUnit(Unit unitToSpawn)
     {
-        PhotonNetwork.Instantiate(unitToSpawn.name, Vector3.one, Quaternion.identity).GetComponent<Unit>().unitOwner = this;
+        InstanciateOnGround(unitToSpawn.name, 1, 1).GetComponent<Unit>().unitOwner = this;
     }
 }

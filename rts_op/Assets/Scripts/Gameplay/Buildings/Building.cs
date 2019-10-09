@@ -22,7 +22,6 @@ public class Building : NetMonoBehaviour
 
     void Start()
     {
-        PutOnGround();
         initialScale = transform.localScale;
         remainingBuildTime = buildTime;
     }

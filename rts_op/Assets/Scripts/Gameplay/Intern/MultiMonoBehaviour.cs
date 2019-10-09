@@ -62,8 +62,7 @@ public class NetMonoBehaviour : MonoBehaviourPun
         get { return photonView.Owner != null; }
     }
 
-
-    public void PutOnGround()
+    private Vector3 GetHighestGroundPoint()
     {
         RaycastHit hit;
 
@@ -73,13 +72,26 @@ public class NetMonoBehaviour : MonoBehaviourPun
 
         if (Physics.Raycast(ray, out hit, 2000f, groundLayer))
         {
-            transform.position = hit.point;
+            return hit.point;
         }
         else
         {
             Debug.LogError("No ground found for " + name);
             EditorGUIUtility.PingObject(this);
             Debug.Break();
+            return Vector3.one * -1000;
         }
+    }
+
+    public void PutOnGround()
+    {
+        transform.position = GetHighestGroundPoint();
+    }
+    
+    public GameObject InstanciateOnGround(string prefabName, int x, int z)
+    {
+        float highestY = GetHighestGroundPoint().y;
+
+        return PhotonNetwork.Instantiate(prefabName, new Vector3(x, highestY, z), Quaternion.identity);
     }
 }
