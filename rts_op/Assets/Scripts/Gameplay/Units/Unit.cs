@@ -24,6 +24,12 @@ public class Unit : NetMonoBehaviour
 
     public PlayerManager unitOwner;
 
+    public Damageable attackTarget;
+
+    public float timeBeforeAttack = 0f;
+
+    public bool attackOnCooldown { get { return timeBeforeAttack > 0f; } }
+
     public void Start()
     {
         GetComponent<Damageable>().currentHp = unitData.maxHp;
@@ -64,10 +70,55 @@ public class Unit : NetMonoBehaviour
     {
         GetComponent<NavMeshAgent>().destination = destination;
     }
+
     void Update()
     {
+        HandleAttacking();
         HandleDeath();
+    }
 
+    public void RequestAttack(Unit unit)
+    {
+        RequestAttack(unit.GetComponent<Damageable>());
+    }
+
+    public void RequestAttack(Damageable attackTarget)
+    {
+        if(!attackOnCooldown)
+        {
+            PerformAttack(attackTarget);
+        }
+    }
+
+    void PerformAttack(Damageable attackTarget)
+    {
+        attackTarget.ApplyDamage(unitData.primaryAttackDamage);
+        timeBeforeAttack = 1/unitData.attackSpeed;
+    }
+
+    void HandleAttacking()
+    {
+        timeBeforeAttack -= Time.deltaTime;
+
+        if(attackTarget)
+        {
+            Debug.Log(Vector3.Distance(transform.position, attackTarget.transform.position));
+            if(Vector3.Distance(transform.position, attackTarget.transform.position) > unitData.attackRange)
+            {
+                WalkTo(attackTarget.transform.position);
+            }
+            else
+            {
+                GetComponent<NavMeshAgent>().isStopped = true;
+                RequestAttack(attackTarget);
+                if (attackTarget.GetComponent<Unit>()) attackTarget.GetComponent<Unit>().RequestAttack(this);
+            }
+        }
+        else
+        {
+
+            GetComponent<NavMeshAgent>().isStopped = false;
+        }
     }
 
     void HandleDeath()
@@ -77,7 +128,19 @@ public class Unit : NetMonoBehaviour
             Destroy();
         }
     }
+
+    public void Attack(Damageable newUnitToAttack)
+    {
+        attackTarget = newUnitToAttack;
+    }
+
+    public bool CanAttack(Damageable damageable)
+    {
+        Unit targetUnit = damageable.GetComponent<Unit>();
+        return !targetUnit  || targetUnit.unitOwner != unitOwner;
+    }
 }
+
 /*
 #if UNITY_EDITOR
 [CustomEditor(typeof(Unit))]

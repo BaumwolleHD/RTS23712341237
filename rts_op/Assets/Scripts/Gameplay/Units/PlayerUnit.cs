@@ -9,7 +9,7 @@ public class PlayerUnit : NetMonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<Unit>().unitOwner == ownerPlayerManager && !Menu.instance.isPaused) WalkToMouse();
+        if (GetComponent<Unit>().unitOwner == ownerPlayerManager && !Menu.instance.isPaused && !GetComponent<Unit>().attackTarget) WalkToMouse();
 
         IEnumerator e = DrawPath(GetComponent<NavMeshAgent>().path);
         StartCoroutine(e);

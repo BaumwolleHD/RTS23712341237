@@ -165,6 +165,8 @@ MonoBehaviour:
   lastChoiceIndex: 0
   unitData: {fileID: 0}
   unitOwner: {fileID: 0}
+  attackTarget: {fileID: 0}
+  timeBeforeAttack: 0
 --- !u!114 &97926294118792984
 MonoBehaviour:
   m_ObjectHideFlags: 0
