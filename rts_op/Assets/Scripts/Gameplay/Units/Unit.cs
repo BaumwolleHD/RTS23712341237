@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(PhotonView))]
 [RequireComponent(typeof(TransformSynchronizer))]
 [RequireComponent(typeof(Damageable))]
-public class Unit : NetMonoBehaviour
+public class Unit : UnitMonoBehaviour
 {
     public int currentXp;
 
@@ -32,21 +32,11 @@ public class Unit : NetMonoBehaviour
 
     public void Start()
     {
-        GetComponent<Damageable>().currentHp = unitData.maxHp;
+        damageable.currentHp = unitData.maxHp;
 
         if (GetComponent<NavMeshAgent>().speed != unitData.movementSpeed)
         {
             GetComponent<NavMeshAgent>().speed = unitData.movementSpeed;
-        }
-
-        MeshRenderer meshRenderer = transform.Find("Offset/Torso").GetComponentInChildren<MeshRenderer>();
-        if (hasOwner)
-        {
-            Material newMat = unitOwner.playerNumber == 1 ? gameManager.mapSettings.teamMaterials[0] : gameManager.mapSettings.teamMaterials[1];
-            if (newMat != meshRenderer.sharedMaterial)
-            {
-                meshRenderer.sharedMaterial = newMat;
-            }
         }
 
         if (!isNPC)
@@ -56,6 +46,15 @@ public class Unit : NetMonoBehaviour
         else
         {
             WalkTo(transform.position + (Vector3.one * Random.Range(0.2f,1f)));
+        }
+    }
+
+    public void SetMaterial(Material newMat)
+    {
+        MeshRenderer meshRenderer = transform.Find("Offset/Torso").GetComponentInChildren<MeshRenderer>();
+        if (newMat != meshRenderer.sharedMaterial)
+        {
+            meshRenderer.sharedMaterial = newMat;
         }
     }
 
@@ -77,9 +76,9 @@ public class Unit : NetMonoBehaviour
         HandleDeath();
     }
 
-    public void RequestAttack(Unit unit)
+    public void RequestAttack(Unit target)
     {
-        RequestAttack(unit.GetComponent<Damageable>());
+        RequestAttack(target.damageable);
     }
 
     public void RequestAttack(Damageable attackTarget)
@@ -123,7 +122,7 @@ public class Unit : NetMonoBehaviour
 
     void HandleDeath()
     {
-        if (GetComponent<Damageable>().isDead)
+        if (damageable.isDead)
         {
             Destroy();
         }
@@ -134,69 +133,9 @@ public class Unit : NetMonoBehaviour
         attackTarget = newUnitToAttack;
     }
 
-    public bool CanAttack(Damageable damageable)
+    public bool CanAttack(Damageable target)
     {
-        Unit targetUnit = damageable.GetComponent<Unit>();
+        Unit targetUnit = target.GetComponent<Unit>();
         return !targetUnit  || targetUnit.unitOwner != unitOwner;
     }
 }
-
-/*
-#if UNITY_EDITOR
-[CustomEditor(typeof(Unit))]
-public class TrooperEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-        Unit thisTrooper = target as Unit;
-        
-
-        if (!Application.isPlaying && !GameObject.Find("GlobalData"))
-        {
-            EditorSceneManager.OpenScene("Assets/Scenes/Menu.unity", OpenSceneMode.Additive);
-        }
-
-        Uni trooperTypeData = GameObject.Find("GlobalData").GetComponent<UnitTypes>();
-
-        FieldInfo[] fields = typeof(UnitTypes).GetFields();
-        List<string> trooperTypes = new List<string>();
-        int count = 0;
-
-        int currentIndex = 0;
-        foreach (FieldInfo field in fields)
-        {
-            count++;
-            if (field.Name != "instance")
-            {
-                string name = ((UnitData)field.GetValue(trooperTypeData)).name;
-                trooperTypes.Add("(" + count.ToString() + ") " + (name != "" ? name : "Namenlos"));
-                if (((UnitData)field.GetValue(trooperTypeData)) == thisTrooper.trooperDataType)
-                {
-                    currentIndex = count - 1;
-                }
-
-            }
-        }
-        if(thisTrooper.lastChoiceIndex == -1)
-        {
-            currentIndex = 0;
-        }
-        int choiceIndex = EditorGUILayout.Popup("Unit-type", currentIndex, trooperTypes.ToArray());
-        if(choiceIndex != thisTrooper.lastChoiceIndex)
-        {
-            thisTrooper.trooperDataType = (UnitData)trooperTypeData.GetType().GetFields()[choiceIndex].GetValue(trooperTypeData);
-            thisTrooper.lastChoiceIndex = choiceIndex;
-        }
-
-        if (!Application.isPlaying)
-        {
-            thisTrooper.Start();
-        }
-
-        thisTrooper.GetComponent<Damageable>().maxHp = thisTrooper.trooperDataType.maxHp;
-    }
-}
-#endif
-
-    */

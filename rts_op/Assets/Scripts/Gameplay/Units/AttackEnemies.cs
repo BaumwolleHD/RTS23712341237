@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackEnemies : MonoBehaviour
+public class AttackEnemies : UnitMonoBehaviour
 {
     public float aggroRange = 10f;
     
@@ -18,7 +18,7 @@ public class AttackEnemies : MonoBehaviour
             float thisDist = Vector3.Distance(transform.position, collider.transform.position);
             Damageable target = collider.GetComponentInParent<Damageable>();
 
-            if (target && target != GetComponent<Damageable>() && GetComponent<Unit>().CanAttack(target) && thisDist < nearestDistance)
+            if (target && target != damageable && unit.CanAttack(target) && thisDist < nearestDistance)
             {
                 nearestDistance = thisDist;
                 nearstTarget = target;
@@ -27,7 +27,7 @@ public class AttackEnemies : MonoBehaviour
 
         if(nearstTarget)
         {
-            GetComponent<Unit>().Attack(nearstTarget);
+            unit.Attack(nearstTarget);
         }
     }
 }
