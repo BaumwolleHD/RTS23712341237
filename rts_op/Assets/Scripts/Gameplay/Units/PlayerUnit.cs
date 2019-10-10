@@ -10,6 +10,9 @@ public class PlayerUnit : NetMonoBehaviour
     void Update()
     {
         if (GetComponent<Unit>().unitOwner == ownerPlayerManager && !Menu.instance.isPaused) WalkToMouse();
+
+        IEnumerator e = DrawPath(GetComponent<NavMeshAgent>().path);
+        StartCoroutine(e);
     }
     
     private Color c = Color.white;
@@ -29,15 +32,10 @@ public class PlayerUnit : NetMonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1000f, groundLayer))
         {
-            Debug.Log(GetComponent<NavMeshAgent>().destination);
             if(Vector3.Distance(GetComponent<NavMeshAgent>().destination, pos)>0.1f)
             {
-                GetComponent<NavMeshAgent>().destination = hit.point;
-                Debug.Log(hit.point);
-            }
-            IEnumerator e = DrawPath(GetComponent<NavMeshAgent>().path);
-            StartCoroutine(e);
-            
+                GetComponent<Unit>().WalkTo(hit.point);
+            }            
         }
         
 

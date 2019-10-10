@@ -39,7 +39,7 @@ public class PlayerManager : NetMonoBehaviour
                 Cursor.lockState = CursorLockMode.Confined;
             }
 
-            Basis newBase = PhotonNetwork.Instantiate("base_lvl1_with_textures", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)).GetComponent<Basis>();
+            Basis newBase = InstanciateOnGround("base_lvl1_with_textures", 0, 0).GetComponent<Basis>();
             basisBuilding = newBase;
             basisBuilding.owningPlayer = this;
         }

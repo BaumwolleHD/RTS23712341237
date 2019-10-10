@@ -62,25 +62,26 @@ public class NetMonoBehaviour : MonoBehaviourPun
         get { return photonView.Owner != null; }
     }
 
-    private Vector3 GetHighestGroundPoint()
+    private static Vector3 GetHighestGroundPoint(float x, float z)
     {
         RaycastHit hit;
-
-        Ray ray = new Ray(new Vector3(transform.position.x, 1000f, transform.position.z), Vector3.down);
+        Ray ray = new Ray(new Vector3(x, 1000f, z), Vector3.down);
 
         int groundLayer = 1 << 8;
-
         if (Physics.Raycast(ray, out hit, 2000f, groundLayer))
         {
             return hit.point;
         }
         else
         {
-            Debug.LogError("No ground found for " + name);
-            EditorGUIUtility.PingObject(this);
+            Debug.LogError("No ground found (" + x + ", " + z + ")");
             Debug.Break();
             return Vector3.one * -1000;
         }
+    }
+    private Vector3 GetHighestGroundPoint()
+    {
+        return GetHighestGroundPoint(transform.position.x, transform.position.z);
     }
 
     public void PutOnGround()
@@ -90,8 +91,7 @@ public class NetMonoBehaviour : MonoBehaviourPun
     
     public GameObject InstanciateOnGround(string prefabName, int x, int z)
     {
-        float highestY = GetHighestGroundPoint().y;
-
+        float highestY = GetHighestGroundPoint(x,z).y;
         return PhotonNetwork.Instantiate(prefabName, new Vector3(x, highestY, z), Quaternion.identity);
     }
 }
