@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: TrooperTwo
   m_EditorClassIdentifier: 
   displayName: No name
-  maxHp: 1000
+  maxHp: 200
   xpForLvl2: 20
   xpForLvl3: 50
-  primaryAttackDamage: 100
+  primaryAttackDamage: 30
   secondaryAttackDamage: 20
   attackRange: 2
   attackSpeed: 0.5
