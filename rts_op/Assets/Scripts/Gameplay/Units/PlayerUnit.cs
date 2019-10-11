@@ -9,13 +9,15 @@ public class PlayerUnit : UnitMonoBehaviour
     private void Start()
     {
         unit.SetMaterial(gameManager.mapSettings.teamMaterials[unit.unitOwner.playerNumber]);
+
+        unit.WalkToBase();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (unit.unitOwner == ownerPlayerManager && !Menu.instance.isPaused && !unit.attackTarget) WalkToMouse();
-        DebugUtils.DrawPath(GetComponent<NavMeshAgent>().path, Color.green);
+        DebugUtils.DrawPath(pathfinder.path, Color.green);
     }
 
     void WalkToMouse()
@@ -30,7 +32,7 @@ public class PlayerUnit : UnitMonoBehaviour
         RaycastHit hit;
         Utils.GetMouseTargetOfLayer(groundLayer, out hit);
         
-        if (Vector3.Distance(GetComponent<NavMeshAgent>().destination, hit.point) > 0.1f)
+        if (Vector3.Distance(pathfinder.destination, hit.point) > 0.1f)
         {
             unit.WalkTo(hit.point);
         }

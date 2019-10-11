@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine.AI;
 
 public class UnitMonoBehaviour : NetMonoBehaviour
 {
     Unit parentInternal;
     Damageable damageableInternal;
+    NavMeshAgent pathfinderInternal;
 
     public Unit unit
     {
@@ -36,6 +35,23 @@ public class UnitMonoBehaviour : NetMonoBehaviour
             {
                 damageableInternal = GetComponentInParent<Damageable>();
                 return damageableInternal;
+            }
+
+        }
+    }
+
+    protected NavMeshAgent pathfinder
+    {
+        get
+        {
+            if (pathfinderInternal)
+            {
+                return pathfinderInternal;
+            }
+            else
+            {
+                pathfinderInternal = GetComponentInParent<NavMeshAgent>();
+                return pathfinderInternal;
             }
 
         }

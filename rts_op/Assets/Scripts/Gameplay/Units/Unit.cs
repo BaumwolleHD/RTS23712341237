@@ -15,38 +15,25 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Damageable))]
 public class Unit : UnitMonoBehaviour
 {
-    public int currentXp;
-
-    [HideInInspector]
-    public int lastChoiceIndex = -1;
-
     public UnitData unitData;
-
     public PlayerManager unitOwner;
-
+    public int currentXp;
     public Damageable attackTarget;
-
     public float timeBeforeAttack = 0f;
 
     public bool attackOnCooldown { get { return timeBeforeAttack > 0f; } }
+    public bool isNPC { get { return unitOwner == null; } }
 
     public void Start()
     {
         damageable.currentHp = unitData.maxHp;
 
-        if (GetComponent<NavMeshAgent>().speed != unitData.movementSpeed)
-        {
-            GetComponent<NavMeshAgent>().speed = unitData.movementSpeed;
-        }
+        if (pathfinder.speed != unitData.movementSpeed) pathfinder.speed = unitData.movementSpeed;
+    }
 
-        if (!isNPC)
-        {
-            WalkToBase();
-        }
-        else
-        {
-            WalkTo(transform.position + (Vector3.one * Random.Range(0.2f,1f)));
-        }
+    void Update()
+    {
+        HandleAttacking();
     }
 
     public void SetMaterial(Material newMat)
@@ -58,8 +45,8 @@ public class Unit : UnitMonoBehaviour
         }
     }
 
-    public bool isNPC { get { return unitOwner == null; } }
-
+    #region Movement
+    
     public void WalkToBase()
     {
         WalkTo(unitOwner.basisBuilding.transform.position);
@@ -67,23 +54,24 @@ public class Unit : UnitMonoBehaviour
 
     public void WalkTo(Vector3 destination)
     {
-        GetComponent<NavMeshAgent>().destination = destination;
+        pathfinder.destination = destination;
     }
+    #endregion
 
-    void Update()
-    {
-        HandleAttacking();
-        HandleDeath();
-    }
+    #region Attacking
 
     public void RequestAttack(Unit target)
     {
         RequestAttack(target.damageable);
     }
 
+    /// <summary>
+    /// Löst einen Angriff aus, wenn der Angriff nicht auf Cooldown ist, unabhängig davon, ob dies Sinn macht
+    /// </summary>
+    /// <param name="attackTarget">Ziel des Angriffes</param>
     public void RequestAttack(Damageable attackTarget)
     {
-        if(!attackOnCooldown)
+        if (!attackOnCooldown)
         {
             PerformAttack(attackTarget);
         }
@@ -92,23 +80,23 @@ public class Unit : UnitMonoBehaviour
     void PerformAttack(Damageable attackTarget)
     {
         attackTarget.ApplyDamage(unitData.primaryAttackDamage);
-        timeBeforeAttack = 1/unitData.attackSpeed;
+        timeBeforeAttack = 1 / unitData.attackSpeed;
     }
 
     void HandleAttacking()
     {
         timeBeforeAttack -= Time.deltaTime;
 
-        if(attackTarget)
+        if (attackTarget)
         {
             Debug.Log(Vector3.Distance(transform.position, attackTarget.transform.position));
-            if(Vector3.Distance(transform.position, attackTarget.transform.position) > unitData.attackRange)
+            if (Vector3.Distance(transform.position, attackTarget.transform.position) > unitData.attackRange)
             {
                 WalkTo(attackTarget.transform.position);
             }
             else
             {
-                GetComponent<NavMeshAgent>().isStopped = true;
+                pathfinder.isStopped = true;
                 RequestAttack(attackTarget);
                 if (attackTarget.GetComponent<Unit>()) attackTarget.GetComponent<Unit>().RequestAttack(this);
             }
@@ -116,15 +104,7 @@ public class Unit : UnitMonoBehaviour
         else
         {
 
-            GetComponent<NavMeshAgent>().isStopped = false;
-        }
-    }
-
-    void HandleDeath()
-    {
-        if (damageable.isDead)
-        {
-            Destroy();
+            pathfinder.isStopped = false;
         }
     }
 
@@ -136,6 +116,7 @@ public class Unit : UnitMonoBehaviour
     public bool CanAttack(Damageable target)
     {
         Unit targetUnit = target.GetComponent<Unit>();
-        return !targetUnit  || targetUnit.unitOwner != unitOwner;
+        return !targetUnit || targetUnit.unitOwner != unitOwner;
     }
+    #endregion
 }

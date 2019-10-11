@@ -3,14 +3,14 @@ using UnityEditor;
 using Photon.Pun;
 
 [RequireComponent(typeof(PhotonView))]
-public class Damageable : MonoBehaviour
+public class Damageable : UnitMonoBehaviour
 {
     public float currentHp;
     public float maxHp = 1000f;
 
-    public bool useScale = false;
-
     private Vector3 initialScale;
+
+    public bool isDead { get { return currentHp < 0f; } }
 
     void Start()
     {
@@ -21,13 +21,10 @@ public class Damageable : MonoBehaviour
     void Update()
     {
         transform.localScale = Vector3.Lerp(initialScale * 0.1f, initialScale, currentHp/maxHp);
-    }
 
-    public bool isDead
-    {
-        get
+        if (isDead)
         {
-            return currentHp < 0f;
+            Destroy();
         }
     }
 
@@ -40,4 +37,5 @@ public class Damageable : MonoBehaviour
     {
         currentHp += amount;
     }
+    
 }
