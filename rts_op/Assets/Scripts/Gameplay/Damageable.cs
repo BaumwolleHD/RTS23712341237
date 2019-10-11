@@ -3,11 +3,13 @@ using UnityEditor;
 using Photon.Pun;
 
 [RequireComponent(typeof(PhotonView))]
+
 public class Damageable : UnitMonoBehaviour
 {
     public float currentHp;
     public float maxHp = 1000f;
-
+    private Unit lastDamageSource;
+    
     private Vector3 initialScale;
 
     public bool isDead { get { return currentHp < 0f; } }
@@ -16,6 +18,7 @@ public class Damageable : UnitMonoBehaviour
     {
         currentHp = maxHp;
         initialScale = transform.localScale;
+        Debug.Log(initialScale);
     }
 
     void Update()
@@ -24,13 +27,19 @@ public class Damageable : UnitMonoBehaviour
 
         if (isDead)
         {
+            lastDamageSource.Killed(this);
             Destroy();
+            if (GetComponent<NeutralUnit>())
+            {
+                GetComponentInParent<Camp>().CampNeutralUnitDies();
+            }
         }
     }
 
-    public void ApplyDamage(float damage)
+    public void ApplyDamage(Unit source, float damage)
     {
         currentHp -= damage;
+        lastDamageSource = source;
     }
 
     public void Heal(float amount)

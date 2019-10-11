@@ -43,6 +43,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 82a3c3a9af3891741984bcc35a073a65,
         type: 2}
+    - target: {fileID: 5222695526024813536, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
+        type: 3}
+      propertyPath: currentUnitData.primaryAttackDamage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1998864397235279694, guid: a2f4a12ffb5abc94ea730f742a25fc3d,
         type: 3}
       propertyPath: m_LocalPosition.x

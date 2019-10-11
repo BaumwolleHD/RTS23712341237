@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -13,15 +14,22 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(PhotonView))]
 [RequireComponent(typeof(TransformSynchronizer))]
 [RequireComponent(typeof(Damageable))]
+
 public class Unit : UnitMonoBehaviour
 {
-    public UnitData unitData;
+    public UnitType unitData;
+    public CurrentUnitData currentUnitData;
     public PlayerManager unitOwner;
-    public int currentXp;
     public Damageable attackTarget;
     public float timeBeforeAttack = 0f;
 
     public bool attackOnCooldown { get { return timeBeforeAttack > 0f; } }
+
+    internal void Killed()
+    {
+        throw new NotImplementedException();
+    }
+
     public bool isNPC { get { return unitOwner == null; } }
 
     public void Start()
@@ -34,6 +42,15 @@ public class Unit : UnitMonoBehaviour
     void Update()
     {
         HandleAttacking();
+        HandleLevelUp();
+    }
+
+    private void HandleLevelUp()
+    {
+        if (unitData.xpForLvlUp.Length >= currentUnitData.level && currentUnitData.xp >= unitData.xpForLvlUp[currentUnitData.level - 1])
+        {
+            currentUnitData.level++;
+        }
     }
 
     public void SetMaterial(Material newMat)
@@ -69,6 +86,7 @@ public class Unit : UnitMonoBehaviour
     /// Löst einen Angriff aus, wenn der Angriff nicht auf Cooldown ist, unabhängig davon, ob dies Sinn macht
     /// </summary>
     /// <param name="attackTarget">Ziel des Angriffes</param>
+
     public void RequestAttack(Damageable attackTarget)
     {
         if (!attackOnCooldown)
@@ -79,7 +97,7 @@ public class Unit : UnitMonoBehaviour
 
     void PerformAttack(Damageable attackTarget)
     {
-        attackTarget.ApplyDamage(unitData.primaryAttackDamage);
+        attackTarget.ApplyDamage(this, unitData.primaryAttackDamage);
         timeBeforeAttack = 1 / unitData.attackSpeed;
     }
 
@@ -89,7 +107,6 @@ public class Unit : UnitMonoBehaviour
 
         if (attackTarget)
         {
-            Debug.Log(Vector3.Distance(transform.position, attackTarget.transform.position));
             if (Vector3.Distance(transform.position, attackTarget.transform.position) > unitData.attackRange)
             {
                 WalkTo(attackTarget.transform.position);
@@ -97,6 +114,7 @@ public class Unit : UnitMonoBehaviour
             else
             {
                 pathfinder.isStopped = true;
+                pathfinder.velocity = Vector3.zero;
                 RequestAttack(attackTarget);
                 if (attackTarget.GetComponent<Unit>()) attackTarget.GetComponent<Unit>().RequestAttack(this);
             }
@@ -113,10 +131,27 @@ public class Unit : UnitMonoBehaviour
         attackTarget = newUnitToAttack;
     }
 
+    public void Killed(Damageable killedDamageble)
+    {
+        if (killedDamageble.GetComponent<Unit>())
+        {
+            currentUnitData.xp += killedDamageble.GetComponent<Unit>().currentUnitData.level * 4;
+        }
+        else if (killedDamageble.GetComponent<Camp>())
+        {
+            killedDamageble.GetComponent<Camp>().DropLoot(this);
+        }
+        
+    }
+
     public bool CanAttack(Damageable target)
     {
         Unit targetUnit = target.GetComponent<Unit>();
-        return !targetUnit || targetUnit.unitOwner != unitOwner;
+        if (targetUnit)
+        {
+            return targetUnit.unitOwner != unitOwner;
+        }
+        return true;
     }
     #endregion
 }

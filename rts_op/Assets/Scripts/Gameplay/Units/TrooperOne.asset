@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: No name
   maxHp: 50
-  xpForLvl2: 20
-  xpForLvl3: 50
   primaryAttackDamage: 10
   secondaryAttackDamage: 20
   attackRange: 6
   attackSpeed: 4.93
-  movementSpeed: 30
+  movementSpeed: 97.78
+  xpForLvlUp: 1400000032000000

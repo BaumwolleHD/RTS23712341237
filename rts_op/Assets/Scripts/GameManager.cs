@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public float gameSpeed = 1;
+
     public float gameTime;
     public MapSettings mapSettings;
     public int playerCount;
@@ -23,6 +25,8 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        Time.timeScale = gameSpeed;
+
         if (!PhotonNetwork.IsConnected) return;
         if(mapIsReady && !playerSpawned)
         {

@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 6350329271151130039}
   - component: {fileID: 1345007623989512436}
   - component: {fileID: 1107668199111324106}
+  - component: {fileID: 6985491615024740711}
+  - component: {fileID: 2550331236802848509}
+  - component: {fileID: 5672057606566064074}
   m_Layer: 0
   m_Name: Camp
   m_TagString: Untagged
@@ -104,8 +107,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad6bda27a68a3d84580b26c633d07eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minUnitCount: 2
-  maxUnitCount: 5
   unitType: {fileID: -7953219222270551943, guid: 973906cc25d222f4992288022b39cc11,
     type: 3}
-  firstSpawnTime: 2
+  timeToRespawn: 0
+  campType: {fileID: 11400000, guid: 825cfbee5da23f54ea0e44d8dd299e0d, type: 2}
+--- !u!114 &6985491615024740711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027358279522670572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &2550331236802848509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027358279522670572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ba084b46d27b7428786736c445ba03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remainingBuildTime: 0
+  buildTime: 2
+--- !u!114 &5672057606566064074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027358279522670572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513322c8efcf51e45a1dfe7e412d7a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHp: 0
+  maxHp: 1000

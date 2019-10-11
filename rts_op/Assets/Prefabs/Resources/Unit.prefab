@@ -138,7 +138,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.75
   m_Speed: 30
-  m_Acceleration: 60
+  m_Acceleration: 300
   avoidancePriority: 50
   m_AngularSpeed: 330
   m_StoppingDistance: 0
@@ -161,9 +161,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8310f21c9533b04787b60bba87e5b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentXp: 0
-  lastChoiceIndex: 0
   unitData: {fileID: 0}
+  currentUnitData:
+    xp: 0
+    hp: 0
+    level: 1
+    attackRange: 0
+    attackSpeed: 0
+    movementSpeed: 0
+    primaryAttackDamage: 0
+    secondaryAttackDamage: 0
   unitOwner: {fileID: 0}
   attackTarget: {fileID: 0}
   timeBeforeAttack: 0
@@ -181,7 +188,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHp: 125
   maxHp: 125
-  useScale: 1
 --- !u!114 &5266943295668681983
 MonoBehaviour:
   m_ObjectHideFlags: 0

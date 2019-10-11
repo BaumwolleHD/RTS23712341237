@@ -9,6 +9,6 @@ public class BurnDamage : MonoBehaviour
     
     void FixedUpdate()
     {
-        GetComponent<Damageable>().ApplyDamage(Time.deltaTime * dps);
+        GetComponent<Damageable>().ApplyDamage(null, Time.deltaTime * dps);
     }
 }
