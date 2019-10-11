@@ -13,129 +13,110 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(PhotonView))]
 [RequireComponent(typeof(TransformSynchronizer))]
 [RequireComponent(typeof(Damageable))]
-public class Unit : NetMonoBehaviour
+public class Unit : UnitMonoBehaviour
 {
-    public int currentXp;
-
-    [HideInInspector]
-    public int lastChoiceIndex = -1;
-
     public UnitData unitData;
-
     public PlayerManager unitOwner;
+    public int currentXp;
+    public Damageable attackTarget;
+    public float timeBeforeAttack = 0f;
+
+    public bool attackOnCooldown { get { return timeBeforeAttack > 0f; } }
+    public bool isNPC { get { return unitOwner == null; } }
 
     public void Start()
     {
-        this.PutOnGround();
+        damageable.currentHp = unitData.maxHp;
 
-        GetComponent<Damageable>().currentHp = unitData.maxHp;
+        if (pathfinder.speed != unitData.movementSpeed) pathfinder.speed = unitData.movementSpeed;
+    }
 
-        if (GetComponent<NavMeshAgent>().speed != unitData.movementSpeed)
-        {
-            GetComponent<NavMeshAgent>().speed = unitData.movementSpeed;
-        }
+    void Update()
+    {
+        HandleAttacking();
+    }
 
-        MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
-        if (hasOwner)
+    public void SetMaterial(Material newMat)
+    {
+        MeshRenderer meshRenderer = transform.Find("Offset/Torso").GetComponentInChildren<MeshRenderer>();
+        if (newMat != meshRenderer.sharedMaterial)
         {
-            Material newMat = unitOwner.playerNumber == 1 ? gameManager.mapSettings.teamMaterials[0] : gameManager.mapSettings.teamMaterials[1];
-            if (newMat != meshRenderer.sharedMaterial)
-            {
-                meshRenderer.sharedMaterial = newMat;
-            }
-        }
-
-        if(!isNPC)
-        {
-            WalkToBase();
-        }
-        else
-        {
-            WalkTo(transform.position + (Vector3.one * Random.Range(0.2f,1f)));
+            meshRenderer.sharedMaterial = newMat;
         }
     }
 
-    public bool isNPC { get { return unitOwner == null; } }
-
-    void WalkToBase()
+    #region Movement
+    
+    public void WalkToBase()
     {
         WalkTo(unitOwner.basisBuilding.transform.position);
     }
 
-    void WalkTo(Vector3 destination)
+    public void WalkTo(Vector3 destination)
     {
-        GetComponent<NavMeshAgent>().destination = destination;
+        pathfinder.destination = destination;
     }
-    void Update()
+    #endregion
+
+    #region Attacking
+
+    public void RequestAttack(Unit target)
     {
-        HandleDeath();
-        
+        RequestAttack(target.damageable);
     }
 
-    void HandleDeath()
+    /// <summary>
+    /// Löst einen Angriff aus, wenn der Angriff nicht auf Cooldown ist, unabhängig davon, ob dies Sinn macht
+    /// </summary>
+    /// <param name="attackTarget">Ziel des Angriffes</param>
+    public void RequestAttack(Damageable attackTarget)
     {
-        if (GetComponent<Damageable>().isDead)
+        if (!attackOnCooldown)
         {
-            Destroy();
+            PerformAttack(attackTarget);
         }
     }
-}
-/*
-#if UNITY_EDITOR
-[CustomEditor(typeof(Unit))]
-public class TrooperEditor : Editor
-{
-    public override void OnInspectorGUI()
+
+    void PerformAttack(Damageable attackTarget)
     {
-        DrawDefaultInspector();
-        Unit thisTrooper = target as Unit;
-        
+        attackTarget.ApplyDamage(unitData.primaryAttackDamage);
+        timeBeforeAttack = 1 / unitData.attackSpeed;
+    }
 
-        if (!Application.isPlaying && !GameObject.Find("GlobalData"))
+    void HandleAttacking()
+    {
+        timeBeforeAttack -= Time.deltaTime;
+
+        if (attackTarget)
         {
-            EditorSceneManager.OpenScene("Assets/Scenes/Menu.unity", OpenSceneMode.Additive);
-        }
-
-        Uni trooperTypeData = GameObject.Find("GlobalData").GetComponent<UnitTypes>();
-
-        FieldInfo[] fields = typeof(UnitTypes).GetFields();
-        List<string> trooperTypes = new List<string>();
-        int count = 0;
-
-        int currentIndex = 0;
-        foreach (FieldInfo field in fields)
-        {
-            count++;
-            if (field.Name != "instance")
+            Debug.Log(Vector3.Distance(transform.position, attackTarget.transform.position));
+            if (Vector3.Distance(transform.position, attackTarget.transform.position) > unitData.attackRange)
             {
-                string name = ((UnitData)field.GetValue(trooperTypeData)).name;
-                trooperTypes.Add("(" + count.ToString() + ") " + (name != "" ? name : "Namenlos"));
-                if (((UnitData)field.GetValue(trooperTypeData)) == thisTrooper.trooperDataType)
-                {
-                    currentIndex = count - 1;
-                }
-
+                WalkTo(attackTarget.transform.position);
+            }
+            else
+            {
+                pathfinder.isStopped = true;
+                RequestAttack(attackTarget);
+                if (attackTarget.GetComponent<Unit>()) attackTarget.GetComponent<Unit>().RequestAttack(this);
             }
         }
-        if(thisTrooper.lastChoiceIndex == -1)
+        else
         {
-            currentIndex = 0;
-        }
-        int choiceIndex = EditorGUILayout.Popup("Unit-type", currentIndex, trooperTypes.ToArray());
-        if(choiceIndex != thisTrooper.lastChoiceIndex)
-        {
-            thisTrooper.trooperDataType = (UnitData)trooperTypeData.GetType().GetFields()[choiceIndex].GetValue(trooperTypeData);
-            thisTrooper.lastChoiceIndex = choiceIndex;
-        }
 
-        if (!Application.isPlaying)
-        {
-            thisTrooper.Start();
+            pathfinder.isStopped = false;
         }
-
-        thisTrooper.GetComponent<Damageable>().maxHp = thisTrooper.trooperDataType.maxHp;
     }
-}
-#endif
 
-    */
+    public void Attack(Damageable newUnitToAttack)
+    {
+        attackTarget = newUnitToAttack;
+    }
+
+    public bool CanAttack(Damageable target)
+    {
+        Unit targetUnit = target.GetComponent<Unit>();
+        return !targetUnit || targetUnit.unitOwner != unitOwner;
+    }
+    #endregion
+}

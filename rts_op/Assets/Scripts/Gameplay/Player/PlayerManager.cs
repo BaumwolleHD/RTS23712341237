@@ -31,7 +31,7 @@ public class PlayerManager : NetMonoBehaviour
     {
         if (photonView.IsMine)
         {
-            if(isRealPlayer)
+            if(isRealPlayer) //TODO: Put in subclass
             {
                 GetComponent<Hotkeys>().enabled = true;
                 GetComponent<Camera>().enabled = true;
@@ -39,7 +39,7 @@ public class PlayerManager : NetMonoBehaviour
                 Cursor.lockState = CursorLockMode.Confined;
             }
 
-            Basis newBase = PhotonNetwork.Instantiate("base_lvl1_with_textures", new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)).GetComponent<Basis>();
+            Basis newBase = InstanciateOnGround("base_lvl1_with_textures", 0, 0).GetComponent<Basis>();
             basisBuilding = newBase;
             basisBuilding.owningPlayer = this;
         }
@@ -49,6 +49,6 @@ public class PlayerManager : NetMonoBehaviour
 
     public void SpawnUnit(Unit unitToSpawn)
     {
-        PhotonNetwork.Instantiate(unitToSpawn.name, Vector3.one, Quaternion.identity).GetComponent<Unit>().unitOwner = this;
+        InstanciateOnGround(unitToSpawn.name, 1, 1).GetComponent<Unit>().unitOwner = this;
     }
 }

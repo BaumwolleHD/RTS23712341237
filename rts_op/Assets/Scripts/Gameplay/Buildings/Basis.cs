@@ -16,8 +16,8 @@ public class Basis : NetMonoBehaviour
     void Start()
     {
         transform.position = ((Vector3[])PhotonNetwork.CurrentRoom.CustomProperties["basePosition"])[owningPlayer.playerNumber];
-        
-        if(owningPlayer.isRealPlayer)
+        PutOnGround();
+        if (owningPlayer.isRealPlayer)
         {
             Camera.main.GetComponent<CameraMovement>().LookAtBase();
         }

@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Unit))]
-public class NeutralUnit : NetMonoBehaviour
+public class NeutralUnit : UnitMonoBehaviour
 {
-    
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        unit.WalkTo(transform.position + (Vector3.one * Random.Range(0.2f, 2f)));
     }
 }
