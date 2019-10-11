@@ -52,6 +52,7 @@ MonoBehaviour:
     xp: 0
     gold: 0
     mana: 0
+  owningPlayer: {fileID: 0}
 --- !u!114 &6714393357087286610
 MonoBehaviour:
   m_ObjectHideFlags: 0
