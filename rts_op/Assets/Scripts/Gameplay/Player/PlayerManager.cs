@@ -7,14 +7,16 @@ public class PlayerManager : NetMonoBehaviour
 {
     public Basis basisBuilding;
     public int playerNumber;
+    public UnitSelection unitSelection;
 
     private void Awake()
     {
-        if(isRealPlayer && PhotonNetwork.IsConnected)
+        unitSelection = GetComponent<UnitSelection>();
+
+        if (isRealPlayer && PhotonNetwork.IsConnected)
         {
             photonView.Owner.TagObject = this;
         }
-
         playerNumber = gameManager.allPlayers.Count;
         gameManager.allPlayers.Add(this);
     }
@@ -36,6 +38,7 @@ public class PlayerManager : NetMonoBehaviour
                 GetComponent<Hotkeys>().enabled = true;
                 GetComponent<Camera>().enabled = true;
                 GetComponent<AudioListener>().enabled = true;
+                GetComponent<UnitSelection>().enabled = true;
                 Cursor.lockState = CursorLockMode.Confined;
             }
 
@@ -49,6 +52,6 @@ public class PlayerManager : NetMonoBehaviour
 
     public void SpawnUnit(Unit unitToSpawn)
     {
-        InstanciateOnGround(unitToSpawn.name, 1, 1).GetComponent<Unit>().unitOwner = this;
+        InstanciateOnGround(unitToSpawn.name, basisBuilding.transform.position.x+8f, basisBuilding.transform.position.z + 8f).GetComponent<Unit>().unitOwner = this;
     }
 }

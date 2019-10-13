@@ -19,7 +19,7 @@ MonoBehaviour:
   maxGoldDrop: 500
   minManaDrop: 6
   maxManaDrop: 12
-  minXpDrop: 50
-  maxXpDrop: 75
+  minXpDrop: 10
+  maxXpDrop: 25
   respawnCooldown: 4
   dropDecayRate: 0.005

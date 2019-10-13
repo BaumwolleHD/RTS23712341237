@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackEnemies : UnitMonoBehaviour
 {
-    public float aggroRange = 10f;
+    public float aggroRange = 15f;
     
     void Update()
     {

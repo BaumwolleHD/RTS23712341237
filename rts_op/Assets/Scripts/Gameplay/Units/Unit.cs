@@ -23,12 +23,9 @@ public class Unit : UnitMonoBehaviour
     public Damageable attackTarget;
     public float timeBeforeAttack = 0f;
 
-    public bool attackOnCooldown { get { return timeBeforeAttack > 0f; } }
+    public TextMesh debugText;
 
-    internal void Killed()
-    {
-        throw new NotImplementedException();
-    }
+    public bool attackOnCooldown { get { return timeBeforeAttack > 0f; } }
 
     public bool isNPC { get { return unitOwner == null; } }
 
@@ -47,9 +44,10 @@ public class Unit : UnitMonoBehaviour
 
     private void HandleLevelUp()
     {
-        if (unitData.xpForLvlUp.Length >= currentUnitData.level && currentUnitData.xp >= unitData.xpForLvlUp[currentUnitData.level - 1])
+        while (unitData.xpForLvlUp.Length >= currentUnitData.level && currentUnitData.xp >= unitData.xpForLvlUp[currentUnitData.level - 1])
         {
             currentUnitData.level++;
+            damageable.initialScale *= 1.5f;
         }
     }
 
@@ -109,6 +107,7 @@ public class Unit : UnitMonoBehaviour
         {
             if (Vector3.Distance(transform.position, attackTarget.transform.position) > unitData.attackRange)
             {
+                pathfinder.isStopped = false;
                 WalkTo(attackTarget.transform.position);
             }
             else

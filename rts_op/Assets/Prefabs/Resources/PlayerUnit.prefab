@@ -24,7 +24,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869642176bb5c8a43b321abb4ea42334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aggroRange: 10
+  aggroRange: 15
 --- !u!1001 &1192392353487903482
 PrefabInstance:
   m_ObjectHideFlags: 0

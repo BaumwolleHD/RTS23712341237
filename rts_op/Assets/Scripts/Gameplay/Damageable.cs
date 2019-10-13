@@ -10,7 +10,7 @@ public class Damageable : UnitMonoBehaviour
     public float maxHp = 1000f;
     private Unit lastDamageSource;
     
-    private Vector3 initialScale;
+    public Vector3 initialScale;
 
     public bool isDead { get { return currentHp < 0f; } }
 
@@ -39,7 +39,8 @@ public class Damageable : UnitMonoBehaviour
     public void ApplyDamage(Unit source, float damage)
     {
         currentHp -= damage;
-        lastDamageSource = source;
+        currentHp = Mathf.Min(currentHp, maxHp);
+        if(source) lastDamageSource = source;
     }
 
     public void Heal(float amount)

@@ -16,7 +16,17 @@ public class PlayerUnit : UnitMonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (unit.unitOwner == ownerPlayerManager && !Menu.instance.isPaused && !unit.attackTarget) WalkToMouse();
+        ownerPlayerManager.unitSelection.CheckUnit(this);
+
+        if (ownerPlayerManager.unitSelection.IsSelected(this))
+        {
+            WalkToMouse();
+            unit.debugText.text = "Selected";
+        }
+        else
+        {
+            unit.debugText.text = "";
+        }
         DebugUtils.DrawPath(pathfinder.path, Color.green);
     }
 
@@ -36,7 +46,5 @@ public class PlayerUnit : UnitMonoBehaviour
         {
             unit.WalkTo(hit.point);
         }
-
-
     }
 }

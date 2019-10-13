@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 624808727965105533}
   - component: {fileID: -8579383023886804274}
   - component: {fileID: 4862945932361716245}
+  - component: {fileID: 1406556386932474416}
   m_Layer: 0
   m_Name: Player
   m_TagString: MainCamera
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basisBuilding: {fileID: 0}
   playerNumber: 0
+  unitSelection: {fileID: 0}
 --- !u!114 &-8579383023886804274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +168,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitToSpawn: {fileID: 6410460033778368794, guid: cb385bea4e53cdb44bbbc9105fad9d63,
     type: 3}
+--- !u!114 &1406556386932474416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624808727965105529}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb99b884e1ce774eb0034586b0b9bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

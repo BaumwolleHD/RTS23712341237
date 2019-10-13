@@ -27,6 +27,14 @@ public class NetMonoBehaviour : MonoBehaviourPun
         }
     }
 
+    public PlayerManager localPlayerManager
+    {
+        get
+        {
+            return ((PlayerManager)PhotonNetwork.LocalPlayer.TagObject);
+        }
+    }
+
     public GameManager gameManager
     {
         get
@@ -89,7 +97,7 @@ public class NetMonoBehaviour : MonoBehaviourPun
         transform.position = GetHighestGroundPoint();
     }
     
-    public GameObject InstanciateOnGround(string prefabName, int x, int z)
+    public GameObject InstanciateOnGround(string prefabName, float x, float z)
     {
         float highestY = GetHighestGroundPoint(x,z).y;
         return PhotonNetwork.Instantiate(prefabName, new Vector3(x, highestY, z), Quaternion.identity);
