@@ -17,6 +17,6 @@ MonoBehaviour:
   primaryAttackDamage: 10
   secondaryAttackDamage: 20
   attackRange: 6
-  attackSpeed: 4.93
+  attackSpeed: 3
   movementSpeed: 97.78
   xpForLvlUp: 1400000032000000

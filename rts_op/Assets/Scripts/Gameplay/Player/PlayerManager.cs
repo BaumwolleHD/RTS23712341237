@@ -33,15 +33,6 @@ public class PlayerManager : NetMonoBehaviour
     {
         if (photonView.IsMine)
         {
-            if(isRealPlayer) //TODO: Put in subclass
-            {
-                GetComponent<Hotkeys>().enabled = true;
-                GetComponent<Camera>().enabled = true;
-                GetComponent<AudioListener>().enabled = true;
-                GetComponent<UnitSelection>().enabled = true;
-                Cursor.lockState = CursorLockMode.Confined;
-            }
-
             Basis newBase = InstanciateOnGround("base_lvl1_with_textures", 0, 0).GetComponent<Basis>();
             basisBuilding = newBase;
             basisBuilding.owningPlayer = this;
@@ -52,6 +43,6 @@ public class PlayerManager : NetMonoBehaviour
 
     public void SpawnUnit(Unit unitToSpawn)
     {
-        InstanciateOnGround(unitToSpawn.name, basisBuilding.transform.position.x+8f, basisBuilding.transform.position.z + 8f).GetComponent<Unit>().unitOwner = this;
+        InstanciateOnGround(unitToSpawn.name, basisBuilding.transform.position.x + 8f, basisBuilding.transform.position.z + 8f).GetComponent<Unit>().unitOwner = this;
     }
 }

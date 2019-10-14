@@ -38,7 +38,11 @@ public class Unit : UnitMonoBehaviour
 
     void Update()
     {
-        HandleAttacking();
+        if(isControlled)
+        {
+            HandleAttacking();
+        }
+
         HandleLevelUp();
     }
 
@@ -89,14 +93,22 @@ public class Unit : UnitMonoBehaviour
     {
         if (!attackOnCooldown)
         {
-            PerformAttack(attackTarget);
+
+            RPC(nameof(NET_PerformAttack), RpcTarget.AllBufferedViaServer, attackTarget, false);
+            timeBeforeAttack = 1 / unitData.attackSpeed;
+
         }
     }
 
-    void PerformAttack(Damageable attackTarget)
+    [PunRPC]
+    void NET_PerformAttack(Damageable attackTarget, bool isCounterattack)
     {
-        attackTarget.ApplyDamage(this, unitData.primaryAttackDamage);
-        timeBeforeAttack = 1 / unitData.attackSpeed;
+        if(attackTarget)
+        {
+            if (attackTarget.unit && !isCounterattack && !attackTarget.unit.attackOnCooldown) attackTarget.unit.NET_PerformAttack(damageable, true);
+
+            attackTarget.ApplyDamage(this, unitData.primaryAttackDamage);
+        }
     }
 
     void HandleAttacking()
@@ -115,7 +127,6 @@ public class Unit : UnitMonoBehaviour
                 pathfinder.isStopped = true;
                 pathfinder.velocity = Vector3.zero;
                 RequestAttack(attackTarget);
-                if (attackTarget.GetComponent<Unit>()) attackTarget.GetComponent<Unit>().RequestAttack(this);
             }
         }
         else

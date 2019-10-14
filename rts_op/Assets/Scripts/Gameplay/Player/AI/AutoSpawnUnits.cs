@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerManager))]
 public class AutoSpawnUnits : MonoBehaviour
 {
-    float interval = 4f;
+    public float interval = 10f;
     float timer = 0f;
     public Unit unitToSpawn;
 

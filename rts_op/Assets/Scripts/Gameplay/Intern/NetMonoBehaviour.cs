@@ -27,6 +27,14 @@ public class NetMonoBehaviour : MonoBehaviourPun
         }
     }
 
+    public bool isControlled
+    {
+        get
+        {
+            return photonView.IsMine;
+        }
+    }
+
     public PlayerManager localPlayerManager
     {
         get
@@ -101,5 +109,10 @@ public class NetMonoBehaviour : MonoBehaviourPun
     {
         float highestY = GetHighestGroundPoint(x,z).y;
         return PhotonNetwork.Instantiate(prefabName, new Vector3(x, highestY, z), Quaternion.identity);
+    }
+
+    public void RPC(string methodName, RpcTarget rpcType, params object[] parameters)
+    {
+        photonView.RPC(methodName, rpcType, parameters);
     }
 }

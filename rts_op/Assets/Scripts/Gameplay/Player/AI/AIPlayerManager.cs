@@ -3,4 +3,7 @@
 [RequireComponent(typeof(PlayerManager))]
 public class AIPlayerManager : NetMonoBehaviour
 {
+    void Start()
+    {
+    }
 }

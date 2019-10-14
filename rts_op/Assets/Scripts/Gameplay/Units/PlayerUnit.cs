@@ -9,7 +9,6 @@ public class PlayerUnit : UnitMonoBehaviour
     private void Start()
     {
         unit.SetMaterial(gameManager.mapSettings.teamMaterials[unit.unitOwner.playerNumber]);
-
         unit.WalkToBase();
     }
 

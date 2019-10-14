@@ -1,10 +1,12 @@
-﻿using Photon.Pun;
+﻿using ExitGames.Client.Photon;
+using MapMagic;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetMonoBehaviour
 {
     public float gameSpeed = 1;
 
@@ -13,9 +15,14 @@ public class GameManager : MonoBehaviour
     public int playerCount;
 
     public List<PlayerManager> allPlayers;
+    public bool spawnAI = true;
 
     bool playerSpawned;
 
+    private void Awake()
+    {
+        PhotonPeer.RegisterType(typeof(Damageable), (byte)'E', Damageable.Serialize, Damageable.Deserialize);
+    }
     private void Start()
     {
         if(!PhotonNetwork.IsConnected)
@@ -33,6 +40,7 @@ public class GameManager : MonoBehaviour
             playerSpawned = true;
             Debug.Log("Spawning player");
             PhotonNetwork.Instantiate("Player", new Vector3(60, 70, 60), Quaternion.Euler(40, -130, 0));
+            if(spawnAI) PhotonNetwork.Instantiate("AIPlayer", Vector3.zero, Quaternion.identity);
         }
 
         if (playerCount > 1)
@@ -41,7 +49,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private bool mapIsReady { get { return GameObject.Find("Map Magic") && !GameObject.Find("Map Magic").GetComponent<MapMagic.MapMagic>().IsWorking; } }
+    private bool mapIsReady { get { return !ThreadWorker.IsWorking("MapMagic");} }
 
     void Timer()
     {

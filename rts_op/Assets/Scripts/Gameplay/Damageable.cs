@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using Photon.Pun;
+using ExitGames.Client.Photon;
 
 [RequireComponent(typeof(PhotonView))]
 
@@ -47,5 +48,33 @@ public class Damageable : UnitMonoBehaviour
     {
         currentHp += amount;
     }
-    
+
+    public static readonly byte[] memVector2 = new byte[4];
+
+    public static short Serialize(StreamBuffer outStream, object customobject)
+    {
+        Damageable vo = (Damageable)customobject;
+        lock (memVector2)
+        {
+            byte[] bytes = memVector2;
+            int index = 0;
+            Protocol.Serialize(vo.photonView.ViewID, bytes, ref index);
+            outStream.Write(bytes, 0, 4);
+        }
+
+        return 4;
+    }
+
+    public static object Deserialize(StreamBuffer inStream, short length)
+    {
+        lock (memVector2)
+        {
+            inStream.Read(memVector2, 0, 4);
+            int index = 0;
+            int viewId;
+            Protocol.Deserialize(out viewId, memVector2, ref index);
+            PhotonView view = PhotonView.Find(viewId);
+            return view ? view.GetComponent<Damageable>() : null;
+        }
+    }
 }
