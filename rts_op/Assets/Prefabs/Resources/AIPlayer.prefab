@@ -39,21 +39,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AIPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: -8579383023886804274, guid: f34c4d941150f494b93dc0f711411dce,
-        type: 3}
-      propertyPath: viewIdField
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 624808727965105531, guid: f34c4d941150f494b93dc0f711411dce,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 624808727965105530, guid: f34c4d941150f494b93dc0f711411dce,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 624808727965105532, guid: f34c4d941150f494b93dc0f711411dce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -109,12 +94,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1406556386932474416, guid: f34c4d941150f494b93dc0f711411dce,
+    - target: {fileID: 624808727965105531, guid: f34c4d941150f494b93dc0f711411dce,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 624808727965105530, guid: f34c4d941150f494b93dc0f711411dce,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8579383023886804274, guid: f34c4d941150f494b93dc0f711411dce,
+        type: 3}
+      propertyPath: viewIdField
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4862945932361716245, guid: f34c4d941150f494b93dc0f711411dce,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1406556386932474416, guid: f34c4d941150f494b93dc0f711411dce,
         type: 3}
       propertyPath: m_Enabled
       value: 0

@@ -18,7 +18,7 @@ public class AttackEnemies : UnitMonoBehaviour
             float thisDist = Vector3.Distance(transform.position, collider.transform.position);
             Damageable target = collider.GetComponentInParent<Damageable>();
 
-            if (target && target.enabled && target != damageable && unit.CanAttack(target) && thisDist < nearestDistance)
+            if (target && target.enabled && target != damageable && unit.WantToAttack(target) && thisDist < nearestDistance)
             {
                 nearestDistance = thisDist;
                 nearstTarget = target;

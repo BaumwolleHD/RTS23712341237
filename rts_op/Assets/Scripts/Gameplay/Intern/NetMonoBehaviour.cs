@@ -104,11 +104,16 @@ public class NetMonoBehaviour : MonoBehaviourPun
     {
         transform.position = GetHighestGroundPoint();
     }
-    
+
     public GameObject InstanciateOnGround(string prefabName, float x, float z)
     {
-        float highestY = GetHighestGroundPoint(x,z).y;
+        float highestY = GetHighestGroundPoint(x, z).y;
         return PhotonNetwork.Instantiate(prefabName, new Vector3(x, highestY, z), Quaternion.identity);
+    }
+    public GameObject SceneInstanciateOnGround(string prefabName, float x, float z)
+    {
+        float highestY = GetHighestGroundPoint(x, z).y;
+        return PhotonNetwork.InstantiateSceneObject(prefabName, new Vector3(x, highestY, z), Quaternion.identity);
     }
 
     public void RPC(string methodName, RpcTarget rpcType, params object[] parameters)

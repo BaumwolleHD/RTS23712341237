@@ -89,24 +89,30 @@ public class Unit : UnitMonoBehaviour
     /// </summary>
     /// <param name="attackTarget">Ziel des Angriffes</param>
 
+    public bool CanAttack(Damageable attackTarget)
+    {
+        return !attackOnCooldown;
+    }
+
     public void RequestAttack(Damageable attackTarget)
     {
-        if (!attackOnCooldown)
+        if (CanAttack(attackTarget))
         {
-
-            RPC(nameof(NET_PerformAttack), RpcTarget.AllBufferedViaServer, attackTarget, false);
             timeBeforeAttack = 1 / unitData.attackSpeed;
-
+            RPC(nameof(NET_PerformAttack), RpcTarget.AllBufferedViaServer, attackTarget);
         }
     }
 
     [PunRPC]
-    void NET_PerformAttack(Damageable attackTarget, bool isCounterattack)
+    void NET_PerformAttack(Damageable attackTarget)
     {
         if(attackTarget)
         {
-            if (attackTarget.unit && !isCounterattack && !attackTarget.unit.attackOnCooldown) attackTarget.unit.NET_PerformAttack(damageable, true);
-
+            if(attackTarget.unit.CanAttack(damageable))
+            {
+                attackTarget.unit.timeBeforeAttack = 1 / attackTarget.unit.unitData.attackSpeed;
+                damageable.ApplyDamage(attackTarget.unit, unitData.primaryAttackDamage);
+            }
             attackTarget.ApplyDamage(this, unitData.primaryAttackDamage);
         }
     }
@@ -154,7 +160,7 @@ public class Unit : UnitMonoBehaviour
         
     }
 
-    public bool CanAttack(Damageable target)
+    public bool WantToAttack(Damageable target)
     {
         Unit targetUnit = target.GetComponent<Unit>();
         if (targetUnit)
