@@ -18,7 +18,7 @@ public class CameraMovement : NetMonoBehaviour
 
     void Update()
     {
-        if (Menu.instance.isPaused)
+        if (Menu.instance && Menu.instance.isPaused)
         {
             return;
         }
