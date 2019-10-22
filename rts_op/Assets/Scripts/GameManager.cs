@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : NetMonoBehaviour
 {
+    public bool isSandbox;
+
     public float gameSpeed = 1;
 
     public float gameTime;
@@ -25,7 +27,7 @@ public class GameManager : NetMonoBehaviour
     }
     private void Start()
     {
-        if(!PhotonNetwork.IsConnected)
+        if(!PhotonNetwork.IsConnected && !isSandbox)
         {
             SceneManager.LoadScene("Menu");
         }
